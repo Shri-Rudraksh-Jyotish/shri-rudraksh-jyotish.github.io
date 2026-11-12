@@ -17,7 +17,13 @@ A static, single-page site for Shri Rudraksh Jyotish (Astrology, Vastu, Reiki), 
   - The hero is `min-height:100svh`, so a tall window stretches it. For a full-page shot, use a scratch copy that injects `.hero{min-height:900px!important}`.
   - Add `.js .reveal{opacity:1!important;transform:none!important}` too, or the scroll-reveal sections can be captured mid-fade.
   - Headless Chrome won't lay out narrower than about 500px, so check mobile by loading the page in a 390px-wide `<iframe>`.
-- Keep the file self-contained: no external scripts, stylesheets, fonts or images. The font stacks name "Bodoni Moda" and "Manrope" first but don't load them; they're used only if installed, with Bodoni 72/Didot/Times and Segoe UI/system-ui as fallbacks. To use them for real, self-host WOFF2 files in the repo. The only outbound link is the `wa.me` share link.
+- **Icons and share image** are the only files besides `index.html`:
+  - `favicon.svg` (the hero ring motif on navy) is the main icon. `favicon-32.png` and `apple-touch-icon.png` (180px) are PNG fallbacks.
+  - `og-image.png` (1200×630) is used by the Open Graph and Twitter tags.
+  - Those tags use absolute `https://shri-rudraksh-jyotish.github.io/…` URLs, because crawlers don't resolve relative paths. Update them, and `<link rel="canonical">`, if a custom domain is added.
+  - The PNGs are rendered from the pages in `_src/`, which Jekyll doesn't publish. To regenerate: `chrome --headless=new --window-size=1200,630 --screenshot=og-image.png file:///<abs>/_src/og-image.html`. Use `--window-size=32,32 --default-background-color=00000000 --allow-file-access-from-files` for `favicon-32.html`, and `180,180` for `apple-touch-icon.html`.
+  - If the brand name, tagline or palette changes, regenerate these.
+- Otherwise keep the page self-contained: no external scripts, stylesheets, fonts or images. The font stacks name "Bodoni Moda" and "Manrope" first but don't load them; they're used only if installed, with Bodoni 72/Didot/Times and Segoe UI/system-ui as fallbacks. To use them for real, self-host WOFF2 files in the repo. The only outbound link is the `wa.me` share link.
 
 ## Architecture (all in `index.html`)
 

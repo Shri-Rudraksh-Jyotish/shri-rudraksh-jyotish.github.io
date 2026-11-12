@@ -12,6 +12,11 @@ Log of work sessions on this repository, newest first. Each entry records what c
   - Contact: the quick-start prompts moved into it.
   - Motion and nav: the spec's entrance choreography and an ambient drift that pauses offscreen. The menu now handles Escape and restores focus, and a scroll spy sets `aria-current`.
   - Kept: the saffron light theme (now opt-in, with navy as the default), the bilingual toggle, the WhatsApp share and the Gen Z copy.
+- Favicon and share links:
+  - Added `favicon.svg` (the ring motif on navy, with no font dependency), plus `favicon-32.png` and `apple-touch-icon.png` fallbacks.
+  - Added a 1200×630 `og-image.png` (brand name in English and Hindi, ring artwork, URL).
+  - Added canonical, Open Graph tags (en_IN with a hi_IN alternate, image size and alt text) and `summary_large_image` Twitter tags, all with absolute URLs.
+  - The generator pages live in `_src/`, which Jekyll doesn't publish.
 - `index.html`: redesigned for Gen Z appeal:
   - Look: a dark cosmic theme with a saffron → rose → violet gradient and a bold sans plus italic serif headline.
   - New pieces: tap-to-start prompt chips, a marquee ticker, a bento services grid with hashtag tags, "vibe" rows in About, a new "How it works" anchor, and two new FAQs (horoscope vs consultation, first-timers).
@@ -41,6 +46,7 @@ Log of work sessions on this repository, newest first. Each entry records what c
 - Cinematic rebuild: the portfolio-specific parts of DESIGN.md were adapted rather than invented. The project selector maps to the 3 services, selected work to the service rows, and Shop was omitted. No projects, testimonials or products were added. The spec's recommended fonts (Bodoni Moda / Manrope) aren't loaded, to keep the page self-contained, and system fallbacks render instead. A rapid double click on Prev/Next is throttled to one transition (900ms), per the spec. Verified with headless Chrome: navy and saffron desktop, 390px mobile, and a scripted test of the scene selector, Hindi labels, menu focus and Escape, theme persistence, and the form and WhatsApp link.
 
 **Follow-ups**
+- [ ] After deploying, check the share preview with a Facebook/LinkedIn post inspector (`og:image` resolves only once the site is live), and re-scrape if the image changes.
 - [ ] Self-host Bodoni Moda and Manrope (licensed WOFF2, `font-display: swap`) if the exact type from DESIGN.md is wanted.
 - [ ] DESIGN.md asks for an original GLB or licensed render of the hero sculpture. The current one is an inline SVG approximation, with no 3D or WebGL.
 - [ ] DESIGN.md §10 asks for manual testing at 320, 768, 1024 and 1920px, 200% zoom, and on real touch devices. Only 390px and 1440px have been checked.
