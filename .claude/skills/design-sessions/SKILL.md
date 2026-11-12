@@ -1,0 +1,81 @@
+---
+name: design-sessions
+description: Create or refresh the repo's project docs. DESIGN.md is the design system extracted from the code, SESSIONS.md is a dated log of work sessions, and AGENTS.md and GEMINI.md are instructions for other coding agents, kept in sync with CLAUDE.md. Use when the user asks to create, update or sync DESIGN.md, SESSIONS.md, AGENTS.md or GEMINI.md, to document the design system, to log or record the current session, or to set up instructions for Codex, Gemini or other agents.
+---
+
+# DESIGN.md, SESSIONS.md, AGENTS.md and GEMINI.md
+
+Maintain four files in the repository root. All of them describe what is actually in the code and the git history. Never invent values, components or past work.
+
+## 1. DESIGN.md: the design system
+
+Read the source first (for this repo, `index.html`: its `<style>` block, markup and `<script>`). Then write or update DESIGN.md with these sections, leaving out any that the code doesn't support:
+
+1. **Principles**: the visual and tonal direction the code implies (e.g. palette mood, serif headings, disclaimers). Keep it to 3–5 bullets.
+2. **Color tokens**: a table of every CSS custom property (name, value, role), then the hard-coded colors that recur outside the tokens, with where they're used. Flag hard-coded colors that duplicate a token.
+3. **Typography**: font stacks, the base size and line height, the heading scale (including `clamp()` values), and the special text styles (eyebrow, lead, note).
+4. **Layout and spacing**: container width and gutters, section padding, grid patterns, breakpoints and what changes at each.
+5. **Components**: one short entry per reusable class pattern (button variants, card, form, FAQ, etc.). Give its class names, key styles, and any states (hover, focus, open).
+6. **Iconography and imagery**: inline SVG, Unicode glyphs, and the rule against external assets, if there is one.
+7. **Internationalization**: how the bilingual text works and what each new piece of text must include.
+8. **Accessibility**: focus styles, skip link, ARIA usage, reduced motion, and the gaps you noticed.
+9. **Known inconsistencies**: concrete deviations found while extracting (duplicated values, untranslated strings, etc.), each with its location.
+
+When DESIGN.md already exists, update it in place. Correct values that drifted from the code, add what's missing, and remove what no longer exists. Keep any hand-written notes that are still accurate.
+
+Begin the file with `# Design System` and a line saying it is generated from the source by the `design-sessions` skill, along with the date.
+
+## 2. SESSIONS.md: the work log
+
+SESSIONS.md is append-only, with the newest entry at the top under the header. Never rewrite or delete earlier entries.
+
+- **When the file doesn't exist:** create it with this header:
+  ```
+  # Sessions
+
+  Log of work sessions on this repository, newest first. Each entry records what changed, decisions made, and open follow-ups.
+  ```
+  Then add a backfilled entry for each commit (or group of same-day commits) from `git log --reverse --date=short --format='%ad %h %s'`. Mark these entries "(backfilled from git history)" and keep them to what the commit messages and diffs show.
+- **Every run:** add an entry for the current session, using this format:
+  ```
+  ## YYYY-MM-DD: <short title>
+
+  **Changes**
+  - <file>: <what changed and why>
+
+  **Decisions**
+  - <decision and its reason> (omit the section if there are none)
+
+  **Follow-ups**
+  - [ ] <open item noticed but not done> (omit if none)
+  ```
+  Base it on this conversation together with `git status` and `git diff`, including uncommitted work. Use today's date. When an entry for today already exists, add to it rather than creating a second one.
+
+## 3. AGENTS.md: instructions for other agents
+
+AGENTS.md is the tool-neutral instruction file that Codex, Cursor, Copilot and other agents read. It is derived from CLAUDE.md, which stays the source of truth for repository guidance.
+
+- Carry over every repository fact from CLAUDE.md: overview, how to preview, architecture, constraints. Rewrite anything Claude-specific in neutral terms, e.g. drop the "Claude Code (claude.ai/code)" preamble and Claude-only tool references.
+- Add a **Project docs** section that points to DESIGN.md (read it before changing styles or markup, and update it when tokens or components change) and SESSIONS.md (add an entry at the end of each work session, using the format in section 2).
+- Begin with `# AGENTS.md`, then one line saying it's generated from CLAUDE.md by the `design-sessions` skill, so edits belong in CLAUDE.md.
+- When CLAUDE.md is missing, build AGENTS.md from the source directly and tell the user.
+- On later runs, regenerate AGENTS.md so it matches the current CLAUDE.md.
+
+## 4. GEMINI.md: Gemini CLI context
+
+GEMINI.md is a thin wrapper, so the instructions live in one place:
+
+```
+# GEMINI.md
+
+Project instructions for Gemini CLI. The shared guidance lives in AGENTS.md and is imported below; edit that file (via CLAUDE.md) rather than this one.
+
+@./AGENTS.md
+```
+
+Add Gemini-specific notes below the import only when there's something true for Gemini alone. If a GEMINI.md already exists with hand-written content, keep that content below the import rather than overwriting it.
+
+## Finishing
+
+- Don't commit unless the user asks.
+- Report which files were created or updated, plus any inconsistencies or follow-ups worth the user's attention, in a few lines.
