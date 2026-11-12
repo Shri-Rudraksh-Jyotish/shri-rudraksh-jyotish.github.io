@@ -2,389 +2,460 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Shri Rudraksh Jyotish — Astrology, Vastu and Reiki consultations, explained in plain language for every generation.">
-<meta name="theme-color" content="#120a1c" id="theme-color">
+<meta name="theme-color" content="#050b1b" id="theme-color">
 <script>
-/* set theme before first paint: saved choice, else OS preference */
+/* apply theme before first paint: saved choice, else the deep-navy default */
 (function(){var t;try{t=localStorage.getItem('theme')}catch(e){}
-if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
-document.documentElement.setAttribute('data-theme',t)})();
+document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})();
 </script>
 <title data-en="Shri Rudraksh Jyotish | Astrology, Vastu &amp; Reiki" data-hi="श्री रुद्राक्ष ज्योतिष | ज्योतिष, वास्तु और रेकी">Shri Rudraksh Jyotish | Astrology, Vastu &amp; Reiki</title>
 <style>
-/* dark (cosmic) theme: the default */
+/* ============ tokens: deep-navy cinematic (default) ============ */
 :root{
   color-scheme:dark;
-  --bg:#120a1c;--bg2:#1c1029;--text:#f7f0ff;--muted:#bfaed3;
-  --surface:rgba(255,255,255,.06);--surface2:rgba(255,255,255,.1);--line:rgba(255,255,255,.13);--line-strong:rgba(255,255,255,.3);
-  --saffron:#ff9a3c;--rose:#ff4f8b;--violet:#9b6bff;--gold:#f5c26b;--wine:#722e2c;--plum:#3d1640;
-  --g1:#ff9a3c;--g2:#ff4f8b;--g3:#9b6bff;--on-grad:#160b12;--on-sym:#160b12;
-  --grad:linear-gradient(120deg,var(--g1),var(--g2) 52%,var(--g3));
-  --sticker-fg:#f5c26b;--sticker-bg:rgba(245,194,107,.12);--sticker-line:rgba(245,194,107,.32);
-  --header-bg:rgba(18,10,28,.72);--well:rgba(0,0,0,.28);
-  --core1:#2a1538;--core2:#120a1c;--art-glow:rgba(155,107,255,.35);
-  --page-bg:radial-gradient(circle at 12% 8%,rgba(255,79,139,.16),transparent 38%),radial-gradient(circle at 88% 28%,rgba(155,107,255,.18),transparent 42%),radial-gradient(circle at 50% 100%,rgba(255,154,60,.1),transparent 45%),var(--bg);
-  --r-sm:14px;--r-md:20px;--r-lg:28px;--pill:999px;
-  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--serif:Georgia,"Times New Roman",serif;
+  --bg-deep:#050b1b;--bg-navy:#09233f;--bg-blue:#164a70;--surface:#101d32;
+  --text:#f7f5f2;--muted:#b4c5d8;
+  --gold:#ffc18a;--cyan:#25b9f3;--pink:#ef438e;--orange:#ff925e;
+  --line:rgba(180,197,216,.2);--line-strong:rgba(180,197,216,.55);
+  --on-accent:#050b1b;--scrim:rgba(5,11,27,.62);--header-bg:rgba(5,11,27,.82);
+  --hero-bg:radial-gradient(ellipse at 50% 8%,var(--bg-blue),var(--bg-navy) 42%,var(--bg-deep) 85%);
+  --font-display:"Bodoni Moda","Bodoni 72","Didot","Bodoni MT","Times New Roman",serif;
+  --font-body:"Manrope","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --ease-out:cubic-bezier(.22,1,.36,1);--ease-in-out:cubic-bezier(.65,0,.35,1);
+  --duration-fast:180ms;--duration-normal:350ms;--duration-scene:900ms;
+  --gutter:clamp(20px,5vw,80px);--content-max:1440px;--header-h:88px;--radius:4px;
 }
-/* light (saffron) theme */
+/* ============ tokens: saffron light (opt-in) ============ */
 :root[data-theme="light"]{
   color-scheme:light;
-  --bg:#fff6e8;--bg2:#ffedd2;--text:#3b1405;--muted:#7a4a2c;
-  --surface:rgba(255,255,255,.66);--surface2:rgba(255,153,51,.16);--line:rgba(150,70,0,.2);--line-strong:rgba(150,70,0,.45);
-  --saffron:#ff9933;--rose:#e8536f;--violet:#f2b233;--gold:#b45309;
-  --g1:#b85500;--g2:#c2410c;--g3:#9f1239;--on-grad:#ffffff;--on-sym:#3b1405;
-  --sticker-fg:#9a3d00;--sticker-bg:rgba(255,153,51,.16);--sticker-line:rgba(184,85,0,.35);
-  --header-bg:rgba(255,246,232,.82);--well:#fffdf8;
-  --core1:#fff7e6;--core2:#ffd59a;--art-glow:rgba(255,140,0,.4);
-  --page-bg:radial-gradient(circle at 12% 8%,rgba(255,153,51,.3),transparent 40%),radial-gradient(circle at 88% 28%,rgba(255,193,7,.24),transparent 42%),radial-gradient(circle at 50% 100%,rgba(194,65,12,.1),transparent 45%),var(--bg);
+  --bg-deep:#fbf4e8;--bg-navy:#f7e4c6;--bg-blue:#f3c37f;--surface:#fffaf1;
+  --text:#1f1408;--muted:#5e4a36;--gold:#a14a00;
+  --line:rgba(94,60,20,.2);--line-strong:rgba(94,60,20,.55);
+  --on-accent:#fffaf1;--scrim:rgba(251,244,232,.72);--header-bg:rgba(251,244,232,.88);
 }
+
+/* ============ base ============ */
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;color:var(--text);font:18px/1.65 var(--sans);background:var(--page-bg);background-attachment:fixed}
+html{scroll-behavior:smooth;scroll-padding-top:var(--header-h)}
+body{margin:0;background:var(--bg-deep);color:var(--text);font:400 17px/1.65 var(--font-body);-webkit-font-smoothing:antialiased}
 a{color:inherit}
-button,input,select,textarea{font:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
 button,a{touch-action:manipulation}
-:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.wrap{max-width:1180px;margin:auto;padding:0 24px}
-.skip{position:absolute;left:-999px}
-.skip:focus{left:10px;top:10px;background:var(--text);color:var(--bg);z-index:20;padding:10px 14px;border-radius:var(--r-sm)}
-.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-
-/* header */
-header{position:sticky;top:0;z-index:10;background:var(--header-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px;position:relative}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.02em;line-height:1.2}
-.mark{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--grad);color:var(--on-grad);font-size:24px;flex:none;box-shadow:0 0 24px rgba(255,79,139,.45)}
-nav{display:flex;gap:26px;align-items:center}
-nav a{text-decoration:none;font-size:15px;font-weight:650;color:var(--muted);transition:color .2s}
-nav a:hover{color:var(--text)}
-.tools{display:flex;gap:8px}
-.lang,.menu,.theme{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:var(--pill);padding:8px 16px;cursor:pointer;font-size:15px;font-weight:650;transition:background .2s,border-color .2s}
-.lang:hover,.menu:hover,.theme:hover{background:var(--surface2);border-color:var(--line-strong)}
-.theme{width:42px;padding:8px 0;font-size:18px;line-height:1.3;color:var(--gold)}
-.menu{display:none}
-
-/* type */
-h1,h2,h3{line-height:1.08;margin:14px 0 18px;letter-spacing:-.035em}
-h1{font-size:clamp(44px,7vw,88px);font-weight:850;letter-spacing:-.045em;line-height:1.02}
-h1 span{display:block}
-h1 .accent{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.03em;padding-bottom:.08em}
-h2{font-size:clamp(34px,4.6vw,56px);font-weight:800}
-h3{font-size:26px;font-weight:750;letter-spacing:-.02em}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.wrap{max-width:var(--content-max);margin:0 auto;padding-inline:max(var(--gutter),env(safe-area-inset-left))}
+.skip{position:absolute;left:-999px;z-index:10}
+.skip:focus{left:12px;top:12px;background:var(--text);color:var(--bg-deep);padding:10px 14px;border-radius:var(--radius)}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;margin:0}
+h2{font-size:clamp(38px,6vw,88px);line-height:1.04;letter-spacing:-.02em}
+h3{font-size:clamp(28px,3.2vw,48px);line-height:1.08}
 p{margin:0 0 18px}
-.sticker{display:inline-block;padding:6px 14px;border-radius:var(--pill);background:var(--sticker-bg);border:1px solid var(--sticker-line);color:var(--sticker-fg);font-size:13px;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
-.lead{font-size:20px;color:var(--muted);max-width:580px}
 .muted{color:var(--muted)}
-.note{font-size:14px;color:var(--muted);margin-top:14px}
+.eyebrow{display:block;font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:0 0 18px}
 
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border:0;border-radius:var(--pill);background:var(--grad);color:var(--on-grad);text-decoration:none;font-weight:750;cursor:pointer;transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,79,139,.4)}
-.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
-.btn.ghost:hover{background:var(--surface);box-shadow:none;border-color:var(--line-strong)}
+/* ============ buttons & links ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:0 24px;border:1px solid var(--gold);border-radius:var(--radius);background:transparent;color:var(--text);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background var(--duration-fast),color var(--duration-fast)}
+.btn:hover{background:var(--gold);color:var(--on-accent)}
+.link{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--text);transition:color var(--duration-fast)}
+.link:hover{color:var(--gold)}
+.arr{display:inline-block;transition:transform var(--duration-fast) var(--ease-out)}
+.btn:hover .arr,.link:hover .arr,.row:hover .arr{transform:translateX(4px)}
 
-/* hero */
-.hero{position:relative;padding:84px 0 72px;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:40px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.prompts{margin-top:34px}
-.prompts p{font-size:14px;font-weight:650;color:var(--muted);margin-bottom:10px}
-.chips{display:flex;flex-wrap:wrap;gap:10px}
-.chip{display:inline-flex;align-items:center;padding:8px 16px;border-radius:var(--pill);background:var(--surface);border:1px solid var(--line);text-decoration:none;font-size:15px;font-weight:600;transition:transform .2s,background .2s,border-color .2s}
-.chip:hover{transform:translateY(-2px);background:rgba(255,79,139,.14);border-color:rgba(255,79,139,.55)}
-.orb{position:relative;max-width:440px;width:100%;margin:auto}
-.art{width:100%;display:block;filter:drop-shadow(0 0 40px var(--art-glow))}
-.art .s1{stop-color:var(--g1)}.art .s2{stop-color:var(--g2)}.art .s3{stop-color:var(--g3)}
-.art .c1{stop-color:var(--core1)}.art .c2{stop-color:var(--core2)}
-.art .om-text{fill:var(--on-grad)}
-.spin{transform-origin:220px 220px;animation:spin 90s linear infinite}
-.spark{position:absolute;color:var(--gold);font-size:22px;animation:float 5s ease-in-out infinite}
-.spark.s1{top:4%;left:8%}
-.spark.s2{top:18%;right:2%;font-size:16px;animation-delay:-1.5s;color:var(--rose)}
-.spark.s3{bottom:8%;left:2%;font-size:14px;animation-delay:-3s;color:var(--violet)}
-.spark.s4{bottom:2%;right:14%;animation-delay:-2s}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes float{50%{transform:translateY(-12px) scale(1.15);opacity:.6}}
+/* ============ header ============ */
+.site-header{position:fixed;inset:0 0 auto;z-index:4;border-bottom:1px solid transparent;transition:background var(--duration-normal),border-color var(--duration-normal);animation:fadeIn 250ms ease both}
+.site-header.solid{background:var(--header-bg);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-color:var(--line)}
+.bar{position:relative;display:flex;align-items:center;gap:24px;height:var(--header-h)}
+#nav{flex:1;display:flex;justify-content:space-between}
+.nav-group{display:flex;gap:36px;list-style:none;margin:0;padding:0}
+#nav a{display:inline-block;padding:12px 0;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--muted);border-bottom:1px solid transparent;transition:color var(--duration-fast),border-color var(--duration-fast)}
+#nav a:hover{color:var(--text)}
+#nav a[aria-current]{color:var(--gold);border-bottom-color:var(--gold)}
+.monogram{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;display:grid;place-items:center;border:1px solid var(--line-strong);border-radius:50%;font-size:26px;line-height:1;text-decoration:none;color:var(--gold);transition:border-color var(--duration-fast)}
+.monogram:hover{border-color:var(--gold)}
+.tools{display:flex;gap:6px;align-items:center}
+.tool{min-width:44px;height:44px;padding:0 12px;border:1px solid var(--line);border-radius:var(--radius);background:transparent;cursor:pointer;font-size:13px;font-weight:600;transition:border-color var(--duration-fast),color var(--duration-fast)}
+.tool:hover{border-color:var(--line-strong);color:var(--gold)}
+#theme{width:44px;padding:0;font-size:17px;color:var(--gold)}
+#menu{display:none;font-size:18px}
 
-/* ticker */
-.ticker{overflow:hidden;border-block:1px solid var(--line);background:rgba(255,255,255,.03);padding:16px 0}
-.track{display:flex;width:max-content;animation:marquee 38s linear infinite}
-.group{display:flex;gap:40px;padding-right:40px;font-size:18px;font-weight:700;white-space:nowrap}
-.group span::before{content:"✦";color:var(--gold);margin-right:40px}
-@keyframes marquee{to{transform:translateX(-50%)}}
+/* ============ hero ============ */
+.hero{position:relative;isolation:isolate;min-height:100svh;background:var(--hero-bg);padding:calc(var(--header-h) + 8px) 0 28px;display:flex;flex-direction:column;overflow:hidden;
+  --a1:#ff925e;--a2:#ef438e;--a3:#25b9f3}
+.hero[data-scene="vastu"]{--a1:#25b9f3;--a2:#3d6bff;--a3:#ffc18a}
+.hero[data-scene="reiki"]{--a1:#ef438e;--a2:#9b6bff;--a3:#7fe3d4}
+.hero-inner{flex:1;width:100%;display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"prev art next" "copy copy copy" "foot foot foot";align-items:center;align-content:center;column-gap:24px}
+.art-wrap{grid-area:art;position:relative;z-index:1;width:min(64vw,65vh,780px);aspect-ratio:1;margin:0 auto;animation:artIn 1000ms var(--ease-out) 100ms both}
+.art{display:block;width:100%;height:100%;overflow:visible;color:var(--muted)}
+.art .a1{stop-color:var(--a1)}.art .a2{stop-color:var(--a2)}.art .a3{stop-color:var(--a3)}
+.art stop{transition:stop-color var(--duration-scene) var(--ease-in-out)}
+.art .lines{opacity:.32}
+.art .core{fill:var(--bg-deep);stroke:var(--gold);stroke-opacity:.6}
+.art .om{fill:var(--gold);font-family:var(--font-display)}
+.drift{transform-origin:300px 300px;animation:drift 12s ease-in-out infinite}
+.turn{transform-origin:300px 300px;transition:transform var(--duration-scene) var(--ease-in-out)}
+.hero.offscreen .drift{animation-play-state:paused}
+.scene-btn{display:inline-flex;align-items:center;gap:14px;min-height:44px;padding:0 4px;background:none;border:0;cursor:pointer;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;transition:color var(--duration-fast)}
+.scene-btn.prev{grid-area:prev}.scene-btn.next{grid-area:next}
+.scene-btn .rule{display:block;width:56px;height:1px;background:var(--line-strong);transition:width var(--duration-normal) var(--ease-out),background var(--duration-normal)}
+.scene-btn:hover{color:var(--text)}
+.scene-btn:hover .rule{width:80px;background:var(--gold)}
+.hero-copy{grid-area:copy;position:relative;z-index:3;text-align:center;margin-top:calc(-1 * clamp(70px,15vh,190px))}
+.hero-copy::before{content:"";position:absolute;inset:-12% -6%;z-index:-1;background:radial-gradient(ellipse at center,var(--scrim),transparent 70%);pointer-events:none}
+.hero h1{font-size:clamp(64px,8vw,144px);line-height:.98;letter-spacing:-.045em;text-transform:uppercase;text-shadow:0 2px 40px var(--scrim);animation:rise 700ms var(--ease-out) 350ms both}
+.diamond{display:block;color:var(--gold);font-size:11px;margin:20px 0 10px}
+.discipline{font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin:0 0 22px}
+.lead{max-width:56ch;margin:0 auto 26px;color:var(--muted);font-size:18px}
+.actions{display:flex;gap:28px;justify-content:center;align-items:center;flex-wrap:wrap}
+.seq{animation:rise 500ms var(--ease-out) both;animation-delay:calc(600ms + var(--i,0) * 100ms)}
+.hero-foot{grid-area:foot;display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.count{font-size:12px;font-weight:600;letter-spacing:.16em;font-variant-numeric:tabular-nums;min-width:72px}
+#scene-info{margin:0;text-align:center}
+#scene-info a{color:var(--gold);text-underline-offset:4px}
+#scene-eyebrow,#scene-info{transition:opacity var(--duration-normal),transform var(--duration-normal) var(--ease-out)}
+.swapping #scene-eyebrow,.swapping #scene-info{opacity:0;transform:translateY(8px)}
+.scroll-cue{min-width:72px;justify-content:flex-end;font-size:12px}
 
-/* sections */
-.section{padding:88px 0;scroll-margin-top:80px}
-.center{text-align:center;max-width:720px;margin:0 auto 44px}
+/* ============ values strip ============ */
+.values{list-style:none;margin:0;padding:22px var(--gutter);display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;border-block:1px solid var(--line);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.values li{display:flex;align-items:center;gap:28px}
+.values li+li::before{content:"◆";color:var(--gold);font-size:7px}
 
-/* services bento */
-.bento{display:grid;grid-template-columns:1.25fr 1fr;gap:18px}
-.card{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:32px;transition:transform .25s,border-color .25s}
-.card::after{content:"";position:absolute;inset:auto -30% -60% auto;width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--glow,rgba(255,79,139,.3)),transparent 65%);opacity:.5;transition:opacity .25s;pointer-events:none}
-.card:hover{transform:translateY(-4px);border-color:var(--line-strong)}
-.card:hover::after{opacity:1}
-.card.big{grid-row:span 2;display:flex;flex-direction:column;justify-content:flex-end;min-height:440px}
-.card.big h3{font-size:38px}
-.symbol{display:grid;place-items:center;width:64px;height:64px;border-radius:var(--r-md);font-size:32px;color:var(--on-sym);background:var(--saffron);margin-bottom:auto}
-.card.big .symbol{width:88px;height:88px;font-size:46px;border-radius:26px}
-.c-astro{--glow:rgba(255,154,60,.35)}
-.c-vastu{--glow:rgba(155,107,255,.4)}.c-vastu .symbol{background:var(--violet)}
-.c-reiki{--glow:rgba(255,79,139,.38)}.c-reiki .symbol{background:var(--rose)}
-.card p{color:var(--muted)}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.tag{font-size:13px;font-weight:650;padding:4px 12px;border-radius:var(--pill);background:var(--surface2);color:var(--text)}
-.card a{position:relative;z-index:1;font-weight:750;color:var(--gold);text-decoration:none}
-.card a:hover{text-decoration:underline;text-underline-offset:4px}
+/* ============ sections ============ */
+.section{padding:clamp(64px,9vw,128px) 0}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.section-head{margin-bottom:clamp(40px,5vw,72px);align-items:end}
+.section-head .eyebrow{grid-column:1/-1;margin:0}
+.section-head h2{grid-column:1/8}
+.section-head p{grid-column:9/13;color:var(--muted);margin:0;max-width:44ch}
+
+/* services: editorial rows */
+.rows{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--line)}
+.row{align-items:baseline;padding:clamp(28px,3.5vw,48px) 0;border-top:1px solid var(--line)}
+.row-num{grid-column:1/2;font-size:12px;font-weight:600;letter-spacing:.16em;color:var(--muted);font-variant-numeric:tabular-nums}
+.row-num .glyph{display:block;margin-top:10px;font-size:22px;letter-spacing:0;color:var(--gold)}
+.row-title{grid-column:2/6}
+.row-title h3{transition:color var(--duration-fast)}
+.row:hover h3{color:var(--gold)}
+.kicker{margin:10px 0 0;font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.row-body{grid-column:6/11;color:var(--muted)}
+.row-body p{max-width:62ch}
+.tags{list-style:none;display:flex;flex-wrap:wrap;gap:4px 18px;margin:0;padding:0;font-size:13px}
+.row-link{grid-column:11/13;justify-self:end}
 
 /* about */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.quote{background:linear-gradient(160deg,var(--wine),var(--plum));color:#fff5df;border:1px solid var(--line);border-radius:var(--r-lg);padding:48px 40px;text-align:center}
-.quote .om{font-size:92px;line-height:1.1;color:#f5c26b;text-shadow:0 0 30px rgba(245,194,107,.5)}
-.quote p{font-family:var(--serif);font-style:italic;font-size:26px;line-height:1.45;margin:10px 0 0}
-.vibes{display:grid;gap:12px;margin-top:24px}
-.vibe{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:16px 20px}
-.vibe .emo{font-size:26px;line-height:1.3}
-.vibe b{display:block}
-.vibe span{color:var(--muted);font-size:16px}
+.about{align-items:center}
+.about-quote{grid-column:1/6;margin:0}
+.about-quote .om{display:block;font-family:var(--font-display);font-size:72px;line-height:1;color:var(--gold);margin-bottom:22px}
+.about-quote p{font-family:var(--font-display);font-style:italic;font-size:clamp(28px,3vw,42px);line-height:1.25;margin:0}
+.about-text{grid-column:7/13}
+.about-text>p{max-width:62ch}
+.vibes{list-style:none;margin:32px 0 0;padding:0;border-top:1px solid var(--line)}
+.vibes li{display:grid;grid-template-columns:minmax(150px,230px) 1fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--line)}
+.vibes b{font-weight:600}
+.vibes span{color:var(--muted)}
 
 /* steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px}
-.num{font-size:60px;font-weight:850;line-height:1;letter-spacing:-.04em}
-.step p{color:var(--muted);margin:0}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.step{border-top:1px solid var(--line-strong);padding-top:28px}
+.step-num{display:block;font-family:var(--font-display);font-size:clamp(48px,5vw,72px);line-height:1;color:var(--gold);margin-bottom:22px}
+.step h3{font-size:clamp(24px,2.4vw,32px);margin-bottom:12px}
+.step p{color:var(--muted);margin:0;max-width:40ch}
 
 /* faq */
-.faq{max-width:820px;margin:auto}
-details{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 22px;margin-bottom:12px;transition:border-color .2s}
-details[open]{border-color:rgba(255,79,139,.5)}
-summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq-head{grid-column:1/5}
+.faq-head h2{font-size:clamp(38px,4.6vw,64px)}
+.faq-list{grid-column:6/13;border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:44px;padding:22px 0;cursor:pointer;list-style:none;font-weight:600;font-size:18px;transition:color var(--duration-fast)}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-size:24px;line-height:1;color:var(--gold);transition:transform .2s;flex:none}
+summary:hover{color:var(--gold)}
+summary::after{content:"";flex:none;width:12px;height:12px;background:linear-gradient(var(--gold),var(--gold)) center/100% 1px no-repeat,linear-gradient(var(--gold),var(--gold)) center/1px 100% no-repeat;transition:transform var(--duration-normal) var(--ease-out)}
 details[open] summary::after{transform:rotate(45deg)}
-details p{margin:12px 0 0;color:var(--muted)}
+details p{margin:0 0 24px;color:var(--muted);max-width:62ch}
 
-/* form */
-.form{background:rgba(255,255,255,.06);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:var(--r-lg);padding:32px}
-label{display:block;font-weight:650;margin:14px 0 6px}
-input,select,textarea{width:100%;padding:14px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--well);color:var(--text);transition:border-color .2s}
-input:focus,select:focus,textarea:focus{border-color:var(--rose)}
-option{background:var(--bg2)}
-textarea{min-height:110px;resize:vertical}
-.form>.btn{margin-top:20px;width:100%}
-.result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+/* contact */
+.contact-intro{grid-column:1/6}
+.contact-intro h2{font-size:clamp(42px,6.5vw,96px);line-height:1;margin-bottom:24px}
+.contact-intro>p{max-width:52ch}
+.prompts{margin:30px 0 26px}
+.prompts>p{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.prompt-list{display:flex;flex-wrap:wrap;gap:8px}
+.prompt{min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:var(--radius);background:transparent;cursor:pointer;font-size:14px;transition:border-color var(--duration-fast),color var(--duration-fast)}
+.prompt:hover{border-color:var(--gold);color:var(--gold)}
+.form{grid-column:7/13}
+label{display:block;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
+.form label:first-child{margin-top:0}
+input,select,textarea{width:100%;padding:14px 16px;border:1px solid var(--line-strong);border-radius:var(--radius);background:transparent;color:var(--text);transition:border-color var(--duration-fast)}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+option{background:var(--surface);color:var(--text)}
+textarea{min-height:120px;resize:vertical}
+.form>.btn{margin-top:26px;width:100%}
+.note{font-size:14px;color:var(--muted);margin-top:14px}
+.result-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
 .result-actions .btn{flex:1 1 180px}
 
 /* footer */
-footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted)}
-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-footer strong{color:var(--text);display:block}
-footer p{margin:0;font-size:14px}
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 32px}
+.f-brand{display:flex;align-items:center;gap:14px;color:var(--text);font-weight:600}
+.f-brand span:first-child{color:var(--gold);font-size:20px}
+footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 24px;margin:0;padding:0}
+footer a{text-decoration:none;transition:color var(--duration-fast)}
+footer a:hover{color:var(--gold)}
+footer p{margin:0}
 
-/* scroll reveal (only when JS runs) */
-.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+/* ============ motion ============ */
+@keyframes fadeIn{from{opacity:0}}
+@keyframes artIn{from{opacity:0;transform:scale(.96)}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+@keyframes drift{50%{transform:translateY(-8px) rotate(3deg)}}
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity 600ms var(--ease-out),transform 600ms var(--ease-out)}
 .js .reveal.in{opacity:1;transform:none}
 
-@media(max-width:800px){
-  .hero{padding:52px 0 48px}
-  .hero-grid,.split,.bento,.steps{grid-template-columns:1fr}
-  .orb{max-width:300px;order:-1}
-  .card.big{grid-row:auto;min-height:0}
-  .card.big h3{font-size:30px}
-  .section{padding:60px 0}
-  .menu{display:block}
-  nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--line);padding:20px;flex-direction:column;align-items:stretch;gap:16px}
-  nav.open{display:flex}
-  .brand{font-size:17px}
-  .nav{gap:8px}
-  .wrap{padding-inline:16px}
-  .quote{padding:36px 24px}
+/* Devanagari: tracking and negative letter-spacing break conjuncts */
+html[lang="hi"] .eyebrow,html[lang="hi"] .discipline,html[lang="hi"] #nav a,html[lang="hi"] .btn,html[lang="hi"] .link,html[lang="hi"] .values,html[lang="hi"] label,html[lang="hi"] .kicker,html[lang="hi"] .scene-btn,html[lang="hi"] .prompts>p,html[lang="hi"] h1,html[lang="hi"] h2{letter-spacing:0}
+
+/* ============ responsive ============ */
+@media(max-width:1023px){
+  #menu{display:inline-flex;align-items:center;justify-content:center}
+  .monogram{position:static;transform:none;margin-right:auto}
+  #nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--line);padding:8px var(--gutter) 24px}
+  #nav.open{display:flex}
+  .nav-group{flex-direction:column;gap:0}
+  #nav a{display:block;font-size:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+  #nav a[aria-current]{border-bottom-color:var(--gold)}
+  .section-head h2,.section-head p{grid-column:1/-1}
+  .row-num{grid-column:1/2}.row-title{grid-column:2/7}.row-body{grid-column:7/13}
+  .row-link{grid-column:2/13;justify-self:start}
+  .about-quote,.about-text,.faq-head,.faq-list,.contact-intro,.form{grid-column:1/-1}
+  .about{row-gap:48px}
+}
+@media(max-width:639px){
+  body{font-size:16px}
+  .hero h1{font-size:clamp(42px,11vw,64px)}
+  .hero-inner{grid-template-columns:1fr 1fr;grid-template-areas:"art art" "copy copy" "prev next" "foot foot";column-gap:12px}
+  .art-wrap{width:min(88vw,58vh)}
+  .hero-copy{margin-top:calc(-1 * clamp(40px,10vh,90px))}
+  .scene-btn{margin-top:28px}.scene-btn.prev{justify-self:start}.scene-btn.next{justify-self:end}
+  .scene-btn .rule{width:28px}
+  .hero-foot{flex-direction:column;gap:10px;margin-top:20px}
+  .scroll-cue{justify-content:center}
+  .lead{font-size:16px}
+  .actions{flex-direction:column;gap:8px}
+  .row{gap:12px}
+  .row>*{grid-column:1/-1!important;justify-self:start!important}
+  .row-num .glyph{display:inline;margin:0 0 0 10px}
+  .steps{grid-template-columns:1fr;gap:40px}
+  .vibes li{grid-template-columns:1fr;gap:4px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .track{flex-wrap:wrap;width:auto;justify-content:center}
-  .group[aria-hidden="true"]{display:none}
-  .js .reveal{opacity:1;transform:none}
+  .js .reveal{opacity:1!important;transform:none!important}
 }
 </style>
 </head>
 <body>
 <a class="skip" href="#main" data-en="Skip to content" data-hi="सामग्री पर जाएँ">Skip to content</a>
 
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#home"><span class="mark" aria-hidden="true">ॐ</span><span data-en="Shri Rudraksh Jyotish" data-hi="श्री रुद्राक्ष ज्योतिष">Shri Rudraksh Jyotish</span></a>
-    <nav id="nav">
-      <a href="#services" data-en="Services" data-hi="सेवाएँ">Services</a>
-      <a href="#about" data-en="About" data-hi="परिचय">About</a>
-      <a href="#how" data-en="How it works" data-hi="प्रक्रिया">How it works</a>
-      <a href="#faq" data-en="FAQs" data-hi="प्रश्न">FAQs</a>
-      <a href="#contact" data-en="Consultation" data-hi="परामर्श">Consultation</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <nav id="nav" aria-label="Primary" data-label-en="Primary" data-label-hi="मुख्य">
+      <ul class="nav-group">
+        <li><a href="#services" data-en="Services" data-hi="सेवाएँ">Services</a></li>
+        <li><a href="#about" data-en="About" data-hi="परिचय">About</a></li>
+        <li><a href="#how" data-en="How it works" data-hi="प्रक्रिया">How it works</a></li>
+      </ul>
+      <ul class="nav-group">
+        <li><a href="#faq" data-en="FAQs" data-hi="प्रश्न">FAQs</a></li>
+        <li><a href="#contact" data-en="Consultation" data-hi="परामर्श">Consultation</a></li>
+      </ul>
     </nav>
+    <a class="monogram" href="#home" aria-label="Shri Rudraksh Jyotish, home" data-label-en="Shri Rudraksh Jyotish, home" data-label-hi="श्री रुद्राक्ष ज्योतिष, मुख्य पृष्ठ">ॐ</a>
     <div class="tools">
-      <button class="theme" id="theme" type="button" aria-label="Switch to light theme">☀</button>
-      <button class="lang" id="lang" lang="hi" data-en="हिन्दी" data-hi="English" aria-label="Switch to Hindi" data-label-en="Switch to Hindi" data-label-hi="अंग्रेज़ी में बदलें">हिन्दी</button>
-      <button class="menu" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Open menu" data-label-en="Open menu" data-label-hi="मेनू खोलें">☰</button>
+      <button class="tool" id="theme" type="button" aria-label="Switch to saffron light theme">☀</button>
+      <button class="tool" id="lang" type="button" lang="hi" data-en="हिन्दी" data-hi="EN" aria-label="Switch to Hindi" data-label-en="Switch to Hindi" data-label-hi="अंग्रेज़ी में बदलें">हिन्दी</button>
+      <button class="tool" id="menu" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu" data-label-en="Menu" data-label-hi="मेनू">☰</button>
     </div>
   </div>
 </header>
 
 <main id="main">
-  <section class="hero" id="home">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="sticker" data-en="✨ Astrology · Vastu · Reiki" data-hi="✨ ज्योतिष · वास्तु · रेकी">✨ Astrology · Vastu · Reiki</span>
-        <h1>
-          <span data-en="Overthinking your next move?" data-hi="अगले कदम को लेकर उलझन?">Overthinking your next move?</span>
-          <span class="accent grad-text" data-en="Get some cosmic clarity." data-hi="सितारों से थोड़ी स्पष्टता पाएँ।">Get some cosmic clarity.</span>
-        </h1>
-        <p class="lead" data-en="Real conversations about your birth chart, your space and your energy, through traditional Jyotish, Vastu Shastra and Reiki. No judgement, no jargon, just guidance at your pace." data-hi="आपकी कुंडली, आपके घर और आपकी ऊर्जा पर सच्ची बातचीत, पारंपरिक ज्योतिष, वास्तु शास्त्र और रेकी के साथ। न कोई जजमेंट, न कठिन शब्द, बस आपकी गति से मार्गदर्शन।">Real conversations about your birth chart, your space and your energy, through traditional Jyotish, Vastu Shastra and Reiki. No judgement, no jargon, just guidance at your pace.</p>
-        <div class="actions">
-          <a class="btn" href="#contact" data-en="Start your request →" data-hi="अपना अनुरोध शुरू करें →">Start your request →</a>
-          <a class="btn ghost" href="#services" data-en="See what we do" data-hi="हमारी सेवाएँ देखें">See what we do</a>
+  <section class="hero" id="home" data-scene="astro" aria-labelledby="hero-title">
+    <div class="wrap hero-inner">
+      <button class="scene-btn prev" id="prev" type="button" aria-controls="scene-info" aria-label="Previous service" data-label-en="Previous service" data-label-hi="पिछली सेवा"><span aria-hidden="true">←</span><span class="rule" aria-hidden="true"></span><span data-en="Prev" data-hi="पिछला">Prev</span></button>
+
+      <div class="art-wrap" aria-hidden="true">
+        <svg class="art" viewBox="0 0 600 600" focusable="false">
+          <defs>
+            <linearGradient id="ringA" x1="0" y1="0" x2="1" y2="1"><stop class="a1" offset="0"/><stop class="a2" offset=".5"/><stop class="a3" offset="1"/></linearGradient>
+            <linearGradient id="ringB" x1="1" y1="0" x2="0" y2="1"><stop class="a3" offset="0"/><stop class="a2" offset=".55"/><stop class="a1" offset="1"/></linearGradient>
+            <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop class="a2" offset="0" stop-opacity=".38"/><stop class="a3" offset=".55" stop-opacity=".12"/><stop class="a3" offset="1" stop-opacity="0"/></radialGradient>
+            <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="16"/></filter>
+          </defs>
+          <circle cx="300" cy="300" r="295" fill="url(#halo)"/>
+          <g class="drift">
+            <g class="turn" id="turn">
+              <g class="lines" fill="none" stroke="currentColor" stroke-width="1">
+                <circle cx="300" cy="300" r="250"/>
+                <circle cx="300" cy="300" r="122"/>
+                <g id="petal"><ellipse cx="300" cy="212" rx="34" ry="72"/></g>
+                <use href="#petal" transform="rotate(45 300 300)"/><use href="#petal" transform="rotate(90 300 300)"/><use href="#petal" transform="rotate(135 300 300)"/><use href="#petal" transform="rotate(180 300 300)"/><use href="#petal" transform="rotate(225 300 300)"/><use href="#petal" transform="rotate(270 300 300)"/><use href="#petal" transform="rotate(315 300 300)"/>
+                <path d="M300 50L550 300 300 550 50 300Z"/>
+              </g>
+              <g filter="url(#soft)" opacity=".75" fill="none">
+                <ellipse cx="300" cy="300" rx="205" ry="120" stroke="url(#ringA)" stroke-width="44" transform="rotate(-28 300 300)"/>
+                <ellipse cx="300" cy="300" rx="205" ry="120" stroke="url(#ringB)" stroke-width="32" transform="rotate(32 300 300)"/>
+              </g>
+              <g fill="none">
+                <ellipse cx="300" cy="300" rx="205" ry="120" stroke="url(#ringA)" stroke-width="30" transform="rotate(-28 300 300)"/>
+                <ellipse cx="300" cy="300" rx="205" ry="120" stroke="url(#ringB)" stroke-width="20" transform="rotate(32 300 300)"/>
+                <circle cx="300" cy="300" r="172" stroke="url(#ringA)" stroke-width="3" opacity=".8"/>
+                <ellipse cx="300" cy="300" rx="205" ry="120" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-dasharray="190 900" transform="rotate(-28 300 300)"/>
+                <ellipse cx="300" cy="300" rx="205" ry="120" stroke="#fff" stroke-opacity=".4" stroke-width="1.5" stroke-dasharray="120 700" stroke-dashoffset="320" transform="rotate(32 300 300)"/>
+              </g>
+            </g>
+          </g>
+          <circle class="core" cx="300" cy="300" r="62" stroke-width="1"/>
+          <text class="om" x="300" y="324" text-anchor="middle" font-size="66">ॐ</text>
+        </svg>
+      </div>
+
+      <button class="scene-btn next" id="next" type="button" aria-controls="scene-info" aria-label="Next service" data-label-en="Next service" data-label-hi="अगली सेवा"><span data-en="Next" data-hi="अगला">Next</span><span class="rule" aria-hidden="true"></span><span aria-hidden="true">→</span></button>
+
+      <div class="hero-copy">
+        <p class="eyebrow seq" style="--i:0"><span id="scene-eyebrow" data-en="Astrology" data-hi="ज्योतिष">Astrology</span></p>
+        <h1 id="hero-title" data-en="Shri Rudraksh Jyotish" data-hi="श्री रुद्राक्ष ज्योतिष">Shri Rudraksh Jyotish</h1>
+        <span class="diamond seq" style="--i:1" aria-hidden="true">◆</span>
+        <p class="discipline seq" style="--i:1" data-en="Guidance for every generation" data-hi="हर पीढ़ी के लिए मार्गदर्शन">Guidance for every generation</p>
+        <p class="lead seq" style="--i:2" data-en="Overthinking your next move? Get some clarity through traditional Jyotish, Vastu Shastra and Reiki. No judgement, no jargon, just guidance at your pace." data-hi="अगले कदम को लेकर उलझन? पारंपरिक ज्योतिष, वास्तु शास्त्र और रेकी के साथ थोड़ी स्पष्टता पाएँ। न कोई जजमेंट, न कठिन शब्द, बस आपकी गति से मार्गदर्शन।">Overthinking your next move? Get some clarity through traditional Jyotish, Vastu Shastra and Reiki. No judgement, no jargon, just guidance at your pace.</p>
+        <div class="actions seq" style="--i:3">
+          <a class="btn" href="#contact"><span data-en="Start your request" data-hi="अपना अनुरोध शुरू करें">Start your request</span><span class="arr" aria-hidden="true">→</span></a>
+          <a class="link" href="#how"><span data-en="How it works" data-hi="यह कैसे काम करता है">How it works</span><span class="arr" aria-hidden="true">→</span></a>
         </div>
+      </div>
+
+      <div class="hero-foot seq" style="--i:4">
+        <span class="count" id="scene-count" aria-hidden="true">01 / 03</span>
+        <p id="scene-info" aria-live="polite"><span id="scene-title" data-en="Astrology" data-hi="ज्योतिष">Astrology</span> — <span id="scene-line" data-en="Your birth chart, decoded." data-hi="आपकी जन्म कुंडली, सरल भाषा में।">Your birth chart, decoded.</span> <a id="scene-link" href="#contact" data-service="Astrology" data-en="Ask about astrology" data-hi="ज्योतिष परामर्श लें">Ask about astrology</a></p>
+        <a class="link scroll-cue" href="#services"><span data-en="Scroll" data-hi="नीचे देखें">Scroll</span><span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  <ul class="values">
+    <li data-en="No judgement" data-hi="कोई जजमेंट नहीं">No judgement</li>
+    <li data-en="Real talk" data-hi="सीधी बात">Real talk</li>
+    <li data-en="Ancient wisdom, modern life" data-hi="प्राचीन ज्ञान, आधुनिक जीवन">Ancient wisdom, modern life</li>
+    <li data-en="Every generation welcome" data-hi="हर पीढ़ी का स्वागत">Every generation welcome</li>
+    <li data-en="Your pace, your questions" data-hi="आपकी गति, आपके सवाल">Your pace, your questions</li>
+  </ul>
+
+  <section class="section" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="grid section-head reveal">
+        <span class="eyebrow" data-en="What we do" data-hi="हम क्या करते हैं">What we do</span>
+        <h2 id="services-title" data-en="Pick your path" data-hi="अपना मार्ग चुनें">Pick your path</h2>
+        <p data-en="Three traditions, one welcoming space. Start wherever feels right." data-hi="तीन परंपराएँ, एक स्वागत भरा स्थान। जहाँ से सही लगे, वहीं से शुरू करें।">Three traditions, one welcoming space. Start wherever feels right.</p>
+      </div>
+      <ol class="rows">
+        <li class="grid row reveal">
+          <span class="row-num">01<span class="glyph" aria-hidden="true">☉</span></span>
+          <div class="row-title"><h3 data-en="Astrology" data-hi="ज्योतिष">Astrology</h3><p class="kicker" data-en="Jyotish" data-hi="वैदिक ज्योतिष">Jyotish</p></div>
+          <div class="row-body">
+            <p data-en="Your birth chart, decoded. Talk through career moves, relationships and big life transitions with traditional Jyotish." data-hi="आपकी जन्म कुंडली, सरल भाषा में। पारंपरिक ज्योतिष के साथ करियर, रिश्तों और जीवन के बड़े बदलावों पर बात करें।">Your birth chart, decoded. Talk through career moves, relationships and big life transitions with traditional Jyotish.</p>
+            <ul class="tags"><li data-en="#birthchart" data-hi="#कुंडली">#birthchart</li><li data-en="#career" data-hi="#करियर">#career</li><li data-en="#relationships" data-hi="#रिश्ते">#relationships</li></ul>
+          </div>
+          <a class="link row-link" href="#contact" data-service="Astrology"><span data-en="Ask about astrology" data-hi="ज्योतिष परामर्श">Ask about astrology</span><span class="arr" aria-hidden="true">→</span></a>
+        </li>
+        <li class="grid row reveal">
+          <span class="row-num">02<span class="glyph" aria-hidden="true">◇</span></span>
+          <div class="row-title"><h3 data-en="Vastu Shastra" data-hi="वास्तु शास्त्र">Vastu Shastra</h3><p class="kicker" data-en="Space &amp; direction" data-hi="स्थान और दिशा">Space &amp; direction</p></div>
+          <div class="row-body">
+            <p data-en="Give your space a glow-up. Traditional principles of direction and layout for your room, home or workspace." data-hi="अपने स्थान को नया रूप दें। आपके कमरे, घर या कार्यस्थल के लिए दिशा और व्यवस्था के पारंपरिक सिद्धांत।">Give your space a glow-up. Traditional principles of direction and layout for your room, home or workspace.</p>
+            <ul class="tags"><li data-en="#homevibes" data-hi="#घर">#homevibes</li><li data-en="#workspace" data-hi="#कार्यस्थल">#workspace</li></ul>
+          </div>
+          <a class="link row-link" href="#contact" data-service="Vastu"><span data-en="Ask about Vastu" data-hi="वास्तु परामर्श">Ask about Vastu</span><span class="arr" aria-hidden="true">→</span></a>
+        </li>
+        <li class="grid row reveal">
+          <span class="row-num">03<span class="glyph" aria-hidden="true">✿</span></span>
+          <div class="row-title"><h3 data-en="Reiki" data-hi="रेकी">Reiki</h3><p class="kicker" data-en="Energy &amp; rest" data-hi="ऊर्जा और विश्राम">Energy &amp; rest</p></div>
+          <div class="row-body">
+            <p data-en="Slow down and reset. A gentle complementary practice for relaxation and reflection, with a Reiki Grandmaster." data-hi="रुकें, साँस लें, फिर शुरू करें। रेकी ग्रैंडमास्टर के साथ विश्राम और आत्मचिंतन का एक सौम्य पूरक अभ्यास।">Slow down and reset. A gentle complementary practice for relaxation and reflection, with a Reiki Grandmaster.</p>
+            <ul class="tags"><li data-en="#selfcare" data-hi="#आत्म-देखभाल">#selfcare</li><li data-en="#unwind" data-hi="#सुकून">#unwind</li></ul>
+          </div>
+          <a class="link row-link" href="#contact" data-service="Reiki"><span data-en="Ask about Reiki" data-hi="रेकी परामर्श">Ask about Reiki</span><span class="arr" aria-hidden="true">→</span></a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="wrap grid about">
+      <blockquote class="about-quote reveal">
+        <span class="om" aria-hidden="true">ॐ</span>
+        <p data-en="May wisdom guide your choices and peace accompany your journey." data-hi="ज्ञान आपके निर्णयों का मार्गदर्शन करे और शांति आपकी यात्रा में साथ रहे।">May wisdom guide your choices and peace accompany your journey.</p>
+      </blockquote>
+      <div class="about-text reveal">
+        <span class="eyebrow" data-en="About us" data-hi="हमारे बारे में">About us</span>
+        <h2 id="about-title" data-en="Old-school wisdom. Zero gatekeeping." data-hi="पुराना ज्ञान, सबके लिए खुला।">Old-school wisdom. Zero gatekeeping.</h2>
+        <p class="muted" style="margin-top:24px" data-en="Shri Rudraksh Jyotish brings astrology, Vastu expertise and Reiki Grandmaster guidance together in one space, explained in plain language for first-timers and lifelong followers alike." data-hi="श्री रुद्राक्ष ज्योतिष में ज्योतिष, वास्तु विशेषज्ञता और रेकी ग्रैंडमास्टर का मार्गदर्शन एक ही स्थान पर है, सरल भाषा में, चाहे आप पहली बार आ रहे हों या वर्षों से इन परंपराओं से जुड़े हों।">Shri Rudraksh Jyotish brings astrology, Vastu expertise and Reiki Grandmaster guidance together in one space, explained in plain language for first-timers and lifelong followers alike.</p>
+        <ul class="vibes">
+          <li><b data-en="Ask anything" data-hi="कुछ भी पूछें">Ask anything</b><span data-en="No question is too basic or too big." data-hi="कोई भी सवाल छोटा या बड़ा नहीं होता।">No question is too basic or too big.</span></li>
+          <li><b data-en="Go at your pace" data-hi="अपनी गति से चलें">Go at your pace</b><span data-en="One conversation at a time, no pressure." data-hi="एक बार में एक बातचीत, कोई दबाव नहीं।">One conversation at a time, no pressure.</span></li>
+          <li><b data-en="Every generation welcome" data-hi="हर पीढ़ी का स्वागत">Every generation welcome</b><span data-en="Come solo, or bring your parents and grandparents along." data-hi="अकेले आएँ, या माता-पिता और दादा-दादी को साथ लाएँ।">Come solo, or bring your parents and grandparents along.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="grid section-head reveal">
+        <span class="eyebrow" data-en="How it works" data-hi="यह कैसे काम करता है">How it works</span>
+        <h2 id="how-title" data-en="Three steps. That's it." data-hi="बस तीन कदम।">Three steps. That's it.</h2>
+      </div>
+      <ol class="steps">
+        <li class="step reveal"><span class="step-num" aria-hidden="true">01</span><h3 data-en="Pick a service" data-hi="सेवा चुनें">Pick a service</h3><p data-en="Astrology, Vastu or Reiki, or tap a quick start below." data-hi="ज्योतिष, वास्तु या रेकी चुनें, या नीचे कोई विषय चुनें।">Astrology, Vastu or Reiki, or tap a quick start below.</p></li>
+        <li class="step reveal"><span class="step-num" aria-hidden="true">02</span><h3 data-en="Drop your questions" data-hi="अपने सवाल लिखें">Drop your questions</h3><p data-en="Tell us what's on your mind, in your own words." data-hi="अपने शब्दों में बताएँ कि आपके मन में क्या है।">Tell us what's on your mind, in your own words.</p></li>
+        <li class="step reveal"><span class="step-num" aria-hidden="true">03</span><h3 data-en="Lock in a session" data-hi="सत्र तय करें">Lock in a session</h3><p data-en="Confirm timing and fees directly before your consultation." data-hi="परामर्श से पहले समय और शुल्क की सीधे पुष्टि करें।">Confirm timing and fees directly before your consultation.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="wrap grid">
+      <div class="faq-head reveal">
+        <span class="eyebrow" data-en="FAQs" data-hi="प्रश्न">FAQs</span>
+        <h2 id="faq-title" data-en="Questions? We got you." data-hi="सवाल? हम हैं ना।">Questions? We got you.</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details><summary data-en="Is this the same as a daily horoscope?" data-hi="क्या यह रोज़ के राशिफल जैसा है?">Is this the same as a daily horoscope?</summary><p data-en="No. A consultation is a personal conversation about your own chart and questions, not a generic reading for your sun sign." data-hi="नहीं। परामर्श आपकी अपनी कुंडली और सवालों पर व्यक्तिगत बातचीत है, किसी राशि का सामान्य फल नहीं।">No. A consultation is a personal conversation about your own chart and questions, not a generic reading for your sun sign.</p></details>
+        <details><summary data-en="I'm totally new to this. Is that okay?" data-hi="मुझे इस बारे में कुछ नहीं पता। क्या यह ठीक है?">I'm totally new to this. Is that okay?</summary><p data-en="Absolutely. You don't need any background, just bring your curiosity and your questions." data-hi="बिल्कुल। किसी पूर्व जानकारी की ज़रूरत नहीं, बस अपनी जिज्ञासा और सवाल लेकर आएँ।">Absolutely. You don't need any background, just bring your curiosity and your questions.</p></details>
+        <details><summary data-en="What should I prepare for an astrology consultation?" data-hi="ज्योतिष परामर्श के लिए क्या तैयार रखें?">What should I prepare for an astrology consultation?</summary><p data-en="Your birth date, approximate or exact birth time, birthplace and your questions." data-hi="जन्म तिथि, अनुमानित या सटीक जन्म समय, जन्म स्थान और अपने प्रश्न।">Your birth date, approximate or exact birth time, birthplace and your questions.</p></details>
+        <details><summary data-en="Can I ask about Vastu for a rented flat or existing home?" data-hi="क्या किराए के या पुराने घर के लिए वास्तु परामर्श ले सकते हैं?">Can I ask about Vastu for a rented flat or existing home?</summary><p data-en="Yes. A floor plan and information about the property's orientation can help guide the discussion." data-hi="हाँ। घर का नक्शा और दिशा की जानकारी चर्चा में सहायक हो सकती है।">Yes. A floor plan and information about the property's orientation can help guide the discussion.</p></details>
+        <details><summary data-en="Does Reiki replace medical treatment?" data-hi="क्या रेकी चिकित्सा का विकल्प है?">Does Reiki replace medical treatment?</summary><p data-en="No. Reiki is a complementary wellness practice and is not a substitute for professional medical or mental health care." data-hi="नहीं। रेकी एक पूरक कल्याण अभ्यास है, पेशेवर चिकित्सा या मानसिक स्वास्थ्य देखभाल का विकल्प नहीं।">No. Reiki is a complementary wellness practice and is not a substitute for professional medical or mental health care.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="wrap grid">
+      <div class="contact-intro reveal">
+        <span class="eyebrow" data-en="Personal consultation" data-hi="व्यक्तिगत परामर्श">Personal consultation</span>
+        <h2 id="contact-title" data-en="Ready when you are." data-hi="जब आप तैयार हों।">Ready when you are.</h2>
+        <p class="muted" data-en="Fill this in to prepare your request, then copy it or share it on WhatsApp with Shri Rudraksh Jyotish to sort out timing and fees." data-hi="अपना अनुरोध तैयार करने के लिए यह भरें, फिर समय और शुल्क तय करने के लिए इसे कॉपी करें या व्हाट्सऐप पर श्री रुद्राक्ष ज्योतिष के साथ साझा करें।">Fill this in to prepare your request, then copy it or share it on WhatsApp with Shri Rudraksh Jyotish to sort out timing and fees.</p>
         <div class="prompts">
-          <p data-en="What's on your mind? Tap one to start:" data-hi="आपके मन में क्या है? शुरू करने के लिए चुनें:">What's on your mind? Tap one to start:</p>
-          <div class="chips">
-            <a class="chip" href="#contact" data-service="Astrology" data-prompt data-en="Career confusion 💼" data-hi="करियर की उलझन 💼">Career confusion 💼</a>
-            <a class="chip" href="#contact" data-service="Astrology" data-prompt data-en="Relationship questions 💞" data-hi="रिश्तों से जुड़े सवाल 💞">Relationship questions 💞</a>
-            <a class="chip" href="#contact" data-service="Vastu" data-prompt data-en="New flat, new energy 🏠" data-hi="नया घर, नई ऊर्जा 🏠">New flat, new energy 🏠</a>
-            <a class="chip" href="#contact" data-service="Vastu" data-prompt data-en="Study or work desk setup 🪴" data-hi="पढ़ाई या काम की जगह 🪴">Study or work desk setup 🪴</a>
-            <a class="chip" href="#contact" data-service="Reiki" data-prompt data-en="Need to unwind 🌙" data-hi="थोड़ा सुकून चाहिए 🌙">Need to unwind 🌙</a>
+          <p data-en="Quick starts" data-hi="जल्दी शुरू करें">Quick starts</p>
+          <div class="prompt-list">
+            <button type="button" class="prompt" data-service="Astrology" data-prompt data-en="Career confusion 💼" data-hi="करियर की उलझन 💼">Career confusion 💼</button>
+            <button type="button" class="prompt" data-service="Astrology" data-prompt data-en="Relationship questions 💞" data-hi="रिश्तों से जुड़े सवाल 💞">Relationship questions 💞</button>
+            <button type="button" class="prompt" data-service="Vastu" data-prompt data-en="New flat, new energy 🏠" data-hi="नया घर, नई ऊर्जा 🏠">New flat, new energy 🏠</button>
+            <button type="button" class="prompt" data-service="Vastu" data-prompt data-en="Study or work desk setup 🪴" data-hi="पढ़ाई या काम की जगह 🪴">Study or work desk setup 🪴</button>
+            <button type="button" class="prompt" data-service="Reiki" data-prompt data-en="Need to unwind 🌙" data-hi="थोड़ा सुकून चाहिए 🌙">Need to unwind 🌙</button>
           </div>
         </div>
-      </div>
-      <div class="orb">
-        <svg class="art" viewBox="0 0 440 440" role="img" aria-label="Glowing sacred geometry mandala with an Om symbol at its centre" data-label-en="Glowing sacred geometry mandala with an Om symbol at its centre" data-label-hi="बीच में ॐ के साथ चमकता हुआ पवित्र ज्यामिति मंडल">
-          <defs>
-            <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop class="s1" stop-color="#ff9a3c"/><stop class="s2" offset=".52" stop-color="#ff4f8b"/><stop class="s3" offset="1" stop-color="#9b6bff"/></linearGradient>
-            <radialGradient id="core"><stop class="c1" stop-color="#2a1538"/><stop class="c2" offset="1" stop-color="#120a1c"/></radialGradient>
-          </defs>
-          <circle cx="220" cy="220" r="206" fill="url(#core)" stroke="url(#sg)" stroke-width="2"/>
-          <g class="spin" fill="none" stroke="url(#sg)" stroke-width="1.4">
-            <circle cx="220" cy="220" r="184" stroke-dasharray="2 8"/>
-            <circle cx="220" cy="220" r="148"/>
-            <circle cx="220" cy="220" r="105"/>
-            <g id="petal"><ellipse cx="220" cy="145" rx="38" ry="75"/></g>
-            <use href="#petal" transform="rotate(45 220 220)"/><use href="#petal" transform="rotate(90 220 220)"/><use href="#petal" transform="rotate(135 220 220)"/><use href="#petal" transform="rotate(180 220 220)"/><use href="#petal" transform="rotate(225 220 220)"/><use href="#petal" transform="rotate(270 220 220)"/><use href="#petal" transform="rotate(315 220 220)"/>
-            <path d="M220 40L400 220 220 400 40 220Z M220 70L350 295H90Z M220 370L90 145H350Z"/>
-          </g>
-          <circle cx="220" cy="220" r="68" fill="url(#sg)"/>
-          <text class="om-text" x="220" y="246" text-anchor="middle" fill="#160b12" font-size="80">ॐ</text>
-          <g fill="#f5c26b"><circle cx="220" cy="24" r="5"/><circle cx="416" cy="220" r="5"/><circle cx="220" cy="416" r="5"/><circle cx="24" cy="220" r="5"/></g>
-        </svg>
-        <span class="spark s1" aria-hidden="true">✦</span><span class="spark s2" aria-hidden="true">✦</span><span class="spark s3" aria-hidden="true">✦</span><span class="spark s4" aria-hidden="true">✦</span>
-      </div>
-    </div>
-  </section>
-
-  <div class="ticker">
-    <div class="track">
-      <div class="group">
-        <span data-en="No judgement" data-hi="कोई जजमेंट नहीं">No judgement</span>
-        <span data-en="Real talk" data-hi="सीधी बात">Real talk</span>
-        <span data-en="Ancient wisdom, modern life" data-hi="प्राचीन ज्ञान, आधुनिक जीवन">Ancient wisdom, modern life</span>
-        <span data-en="Every generation welcome" data-hi="हर पीढ़ी का स्वागत">Every generation welcome</span>
-        <span data-en="Your pace, your questions" data-hi="आपकी गति, आपके सवाल">Your pace, your questions</span>
-      </div>
-      <div class="group" aria-hidden="true">
-        <span data-en="No judgement" data-hi="कोई जजमेंट नहीं">No judgement</span>
-        <span data-en="Real talk" data-hi="सीधी बात">Real talk</span>
-        <span data-en="Ancient wisdom, modern life" data-hi="प्राचीन ज्ञान, आधुनिक जीवन">Ancient wisdom, modern life</span>
-        <span data-en="Every generation welcome" data-hi="हर पीढ़ी का स्वागत">Every generation welcome</span>
-        <span data-en="Your pace, your questions" data-hi="आपकी गति, आपके सवाल">Your pace, your questions</span>
-      </div>
-    </div>
-  </div>
-
-  <section class="section" id="services">
-    <div class="wrap">
-      <div class="center reveal">
-        <span class="sticker" data-en="What we do" data-hi="हम क्या करते हैं">What we do</span>
-        <h2 data-en="Pick your path" data-hi="अपना मार्ग चुनें">Pick your path</h2>
-        <p class="muted" data-en="Three traditions, one welcoming space. Start wherever feels right." data-hi="तीन परंपराएँ, एक स्वागत भरा स्थान। जहाँ से सही लगे, वहीं से शुरू करें।">Three traditions, one welcoming space. Start wherever feels right.</p>
-      </div>
-      <div class="bento">
-        <article class="card big c-astro reveal">
-          <div class="symbol" aria-hidden="true">☉</div>
-          <h3 data-en="Astrology" data-hi="ज्योतिष">Astrology</h3>
-          <p data-en="Your birth chart, decoded. Talk through career moves, relationships and big life transitions with traditional Jyotish." data-hi="आपकी जन्म कुंडली, सरल भाषा में। पारंपरिक ज्योतिष के साथ करियर, रिश्तों और जीवन के बड़े बदलावों पर बात करें।">Your birth chart, decoded. Talk through career moves, relationships and big life transitions with traditional Jyotish.</p>
-          <div class="tags"><span class="tag" data-en="#birthchart" data-hi="#कुंडली">#birthchart</span><span class="tag" data-en="#career" data-hi="#करियर">#career</span><span class="tag" data-en="#relationships" data-hi="#रिश्ते">#relationships</span></div>
-          <a href="#contact" data-service="Astrology" data-en="Ask about astrology →" data-hi="ज्योतिष परामर्श →">Ask about astrology →</a>
-        </article>
-        <article class="card c-vastu reveal">
-          <div class="symbol" aria-hidden="true">◇</div>
-          <h3 data-en="Vastu Shastra" data-hi="वास्तु शास्त्र">Vastu Shastra</h3>
-          <p data-en="Give your space a glow-up. Traditional principles of direction and layout for your room, home or workspace." data-hi="अपने स्थान को नया रूप दें। आपके कमरे, घर या कार्यस्थल के लिए दिशा और व्यवस्था के पारंपरिक सिद्धांत।">Give your space a glow-up. Traditional principles of direction and layout for your room, home or workspace.</p>
-          <div class="tags"><span class="tag" data-en="#homevibes" data-hi="#घर">#homevibes</span><span class="tag" data-en="#workspace" data-hi="#कार्यस्थल">#workspace</span></div>
-          <a href="#contact" data-service="Vastu" data-en="Ask about Vastu →" data-hi="वास्तु परामर्श →">Ask about Vastu →</a>
-        </article>
-        <article class="card c-reiki reveal">
-          <div class="symbol" aria-hidden="true">✿</div>
-          <h3 data-en="Reiki" data-hi="रेकी">Reiki</h3>
-          <p data-en="Slow down and reset. A gentle complementary practice for relaxation and reflection, with a Reiki Grandmaster." data-hi="रुकें, साँस लें, फिर शुरू करें। रेकी ग्रैंडमास्टर के साथ विश्राम और आत्मचिंतन का एक सौम्य पूरक अभ्यास।">Slow down and reset. A gentle complementary practice for relaxation and reflection, with a Reiki Grandmaster.</p>
-          <div class="tags"><span class="tag" data-en="#selfcare" data-hi="#आत्म-देखभाल">#selfcare</span><span class="tag" data-en="#unwind" data-hi="#सुकून">#unwind</span></div>
-          <a href="#contact" data-service="Reiki" data-en="Ask about Reiki →" data-hi="रेकी परामर्श →">Ask about Reiki →</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="about">
-    <div class="wrap split">
-      <div class="quote reveal">
-        <div class="om" aria-hidden="true">ॐ</div>
-        <p data-en="May wisdom guide your choices and peace accompany your journey." data-hi="ज्ञान आपके निर्णयों का मार्गदर्शन करे और शांति आपकी यात्रा में साथ रहे।">May wisdom guide your choices and peace accompany your journey.</p>
-      </div>
-      <div class="reveal">
-        <span class="sticker" data-en="About us" data-hi="हमारे बारे में">About us</span>
-        <h2 data-en="Old-school wisdom. Zero gatekeeping." data-hi="पुराना ज्ञान, सबके लिए खुला।">Old-school wisdom. Zero gatekeeping.</h2>
-        <p class="muted" data-en="Shri Rudraksh Jyotish brings astrology, Vastu expertise and Reiki Grandmaster guidance together in one space, explained in plain language for first-timers and lifelong followers alike." data-hi="श्री रुद्राक्ष ज्योतिष में ज्योतिष, वास्तु विशेषज्ञता और रेकी ग्रैंडमास्टर का मार्गदर्शन एक ही स्थान पर है, सरल भाषा में, चाहे आप पहली बार आ रहे हों या वर्षों से इन परंपराओं से जुड़े हों।">Shri Rudraksh Jyotish brings astrology, Vastu expertise and Reiki Grandmaster guidance together in one space, explained in plain language for first-timers and lifelong followers alike.</p>
-        <div class="vibes">
-          <div class="vibe"><span class="emo" aria-hidden="true">💬</span><div><b data-en="Ask anything" data-hi="कुछ भी पूछें">Ask anything</b><span data-en="No question is too basic or too big." data-hi="कोई भी सवाल छोटा या बड़ा नहीं होता।">No question is too basic or too big.</span></div></div>
-          <div class="vibe"><span class="emo" aria-hidden="true">🧘</span><div><b data-en="Go at your pace" data-hi="अपनी गति से चलें">Go at your pace</b><span data-en="One conversation at a time, no pressure." data-hi="एक बार में एक बातचीत, कोई दबाव नहीं।">One conversation at a time, no pressure.</span></div></div>
-          <div class="vibe"><span class="emo" aria-hidden="true">🤝</span><div><b data-en="Every generation welcome" data-hi="हर पीढ़ी का स्वागत">Every generation welcome</b><span data-en="Come solo, or bring your parents and grandparents along." data-hi="अकेले आएँ, या माता-पिता और दादा-दादी को साथ लाएँ।">Come solo, or bring your parents and grandparents along.</span></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="how">
-    <div class="wrap">
-      <div class="center reveal">
-        <span class="sticker" data-en="How it works" data-hi="यह कैसे काम करता है">How it works</span>
-        <h2 data-en="Three steps. That's it." data-hi="बस तीन कदम।">Three steps. That's it.</h2>
-      </div>
-      <div class="steps">
-        <div class="step reveal"><div class="num grad-text">01</div><h3 data-en="Pick a service" data-hi="सेवा चुनें">Pick a service</h3><p data-en="Astrology, Vastu or Reiki, or tap a prompt above." data-hi="ज्योतिष, वास्तु या रेकी चुनें, या ऊपर कोई विषय चुनें।">Astrology, Vastu or Reiki, or tap a prompt above.</p></div>
-        <div class="step reveal"><div class="num grad-text">02</div><h3 data-en="Drop your questions" data-hi="अपने सवाल लिखें">Drop your questions</h3><p data-en="Tell us what's on your mind, in your own words." data-hi="अपने शब्दों में बताएँ कि आपके मन में क्या है।">Tell us what's on your mind, in your own words.</p></div>
-        <div class="step reveal"><div class="num grad-text">03</div><h3 data-en="Lock in a session" data-hi="सत्र तय करें">Lock in a session</h3><p data-en="Confirm timing and fees directly before your consultation." data-hi="परामर्श से पहले समय और शुल्क की सीधे पुष्टि करें।">Confirm timing and fees directly before your consultation.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="faq">
-    <div class="wrap faq">
-      <div class="center reveal">
-        <span class="sticker" data-en="FAQs" data-hi="प्रश्न">FAQs</span>
-        <h2 data-en="Questions? We got you." data-hi="सवाल? हम हैं ना।">Questions? We got you.</h2>
-      </div>
-      <details><summary data-en="Is this the same as a daily horoscope?" data-hi="क्या यह रोज़ के राशिफल जैसा है?">Is this the same as a daily horoscope?</summary><p data-en="No. A consultation is a personal conversation about your own chart and questions, not a generic reading for your sun sign." data-hi="नहीं। परामर्श आपकी अपनी कुंडली और सवालों पर व्यक्तिगत बातचीत है, किसी राशि का सामान्य फल नहीं।">No. A consultation is a personal conversation about your own chart and questions, not a generic reading for your sun sign.</p></details>
-      <details><summary data-en="I'm totally new to this. Is that okay?" data-hi="मुझे इस बारे में कुछ नहीं पता। क्या यह ठीक है?">I'm totally new to this. Is that okay?</summary><p data-en="Absolutely. You don't need any background, just bring your curiosity and your questions." data-hi="बिल्कुल। किसी पूर्व जानकारी की ज़रूरत नहीं, बस अपनी जिज्ञासा और सवाल लेकर आएँ।">Absolutely. You don't need any background, just bring your curiosity and your questions.</p></details>
-      <details><summary data-en="What should I prepare for an astrology consultation?" data-hi="ज्योतिष परामर्श के लिए क्या तैयार रखें?">What should I prepare for an astrology consultation?</summary><p data-en="Your birth date, approximate or exact birth time, birthplace and your questions." data-hi="जन्म तिथि, अनुमानित या सटीक जन्म समय, जन्म स्थान और अपने प्रश्न।">Your birth date, approximate or exact birth time, birthplace and your questions.</p></details>
-      <details><summary data-en="Can I ask about Vastu for a rented flat or existing home?" data-hi="क्या किराए के या पुराने घर के लिए वास्तु परामर्श ले सकते हैं?">Can I ask about Vastu for a rented flat or existing home?</summary><p data-en="Yes. A floor plan and information about the property's orientation can help guide the discussion." data-hi="हाँ। घर का नक्शा और दिशा की जानकारी चर्चा में सहायक हो सकती है।">Yes. A floor plan and information about the property's orientation can help guide the discussion.</p></details>
-      <details><summary data-en="Does Reiki replace medical treatment?" data-hi="क्या रेकी चिकित्सा का विकल्प है?">Does Reiki replace medical treatment?</summary><p data-en="No. Reiki is a complementary wellness practice and is not a substitute for professional medical or mental health care." data-hi="नहीं। रेकी एक पूरक कल्याण अभ्यास है, पेशेवर चिकित्सा या मानसिक स्वास्थ्य देखभाल का विकल्प नहीं।">No. Reiki is a complementary wellness practice and is not a substitute for professional medical or mental health care.</p></details>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="wrap split">
-      <div class="reveal">
-        <span class="sticker" data-en="Personal consultation" data-hi="व्यक्तिगत परामर्श">Personal consultation</span>
-        <h2 data-en="Ready when you are." data-hi="जब आप तैयार हों।">Ready when you are.</h2>
-        <p class="muted" data-en="Fill this in to prepare your request, then copy it or share it on WhatsApp with Shri Rudraksh Jyotish to sort out timing and fees." data-hi="अपना अनुरोध तैयार करने के लिए यह भरें, फिर समय और शुल्क तय करने के लिए इसे कॉपी करें या व्हाट्सऐप पर श्री रुद्राक्ष ज्योतिष के साथ साझा करें।">Fill this in to prepare your request, then copy it or share it on WhatsApp with Shri Rudraksh Jyotish to sort out timing and fees.</p>
         <p class="note" data-en="Please don't include sensitive medical or financial information. Spiritual guidance is not a substitute for professional advice." data-hi="कृपया संवेदनशील चिकित्सा या वित्तीय जानकारी न दें। आध्यात्मिक मार्गदर्शन पेशेवर सलाह का विकल्प नहीं है।">Please don't include sensitive medical or financial information. Spiritual guidance is not a substitute for professional advice.</p>
       </div>
       <form class="form reveal" id="request">
@@ -398,13 +469,13 @@ footer p{margin:0;font-size:14px}
         </select>
         <label for="message" data-en="What's on your mind? (optional)" data-hi="आपके मन में क्या है? (वैकल्पिक)">What's on your mind? (optional)</label>
         <textarea id="message"></textarea>
-        <button class="btn" type="submit" data-en="Prepare my request ✨" data-hi="मेरा अनुरोध तैयार करें ✨">Prepare my request ✨</button>
+        <button class="btn" type="submit"><span data-en="Prepare my request" data-hi="मेरा अनुरोध तैयार करें">Prepare my request</span><span class="arr" aria-hidden="true">→</span></button>
         <p class="note" data-en="This prepares a message on your device. It doesn't send anything or book a session." data-hi="यह संदेश केवल आपके डिवाइस पर तैयार होता है। यह कुछ भेजता नहीं और न ही सत्र बुक करता है।">This prepares a message on your device. It doesn't send anything or book a session.</p>
         <div id="result" hidden>
           <label for="output" data-en="Your prepared message" data-hi="आपका तैयार संदेश">Your prepared message</label>
           <textarea id="output" readonly></textarea>
           <div class="result-actions">
-            <button type="button" class="btn ghost" id="copy" data-en="Copy message" data-hi="संदेश कॉपी करें">Copy message</button>
+            <button type="button" class="btn" id="copy" data-en="Copy message" data-hi="संदेश कॉपी करें">Copy message</button>
             <a class="btn" id="wa" href="https://wa.me/" target="_blank" rel="noopener" data-en="Share on WhatsApp" data-hi="व्हाट्सऐप पर साझा करें">Share on WhatsApp</a>
           </div>
           <p id="status" role="status" class="note"></p>
@@ -416,52 +487,112 @@ footer p{margin:0;font-size:14px}
 
 <footer>
   <div class="wrap">
-    <div><strong data-en="Shri Rudraksh Jyotish" data-hi="श्री रुद्राक्ष ज्योतिष">Shri Rudraksh Jyotish</strong><p data-en="Astrology · Vastu · Reiki" data-hi="ज्योतिष · वास्तु · रेकी">Astrology · Vastu · Reiki</p></div>
+    <div class="f-brand"><span aria-hidden="true">ॐ</span><span data-en="Shri Rudraksh Jyotish" data-hi="श्री रुद्राक्ष ज्योतिष">Shri Rudraksh Jyotish</span></div>
+    <ul>
+      <li><a href="#services" data-en="Services" data-hi="सेवाएँ">Services</a></li>
+      <li><a href="#faq" data-en="FAQs" data-hi="प्रश्न">FAQs</a></li>
+      <li><a href="#contact" data-en="Consultation" data-hi="परामर्श">Consultation</a></li>
+    </ul>
     <p>© <span id="year"></span> <span data-en="Shri Rudraksh Jyotish" data-hi="श्री रुद्राक्ष ज्योतिष">Shri Rudraksh Jyotish</span></p>
   </div>
 </footer>
 
 <script>
 document.documentElement.classList.add('js');
-let hindi=false;
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
-const nav=$('#nav'),menu=$('#menu');
-const setMenu=open=>{nav.classList.toggle('open',open);menu.setAttribute('aria-expanded',open)};
+const root=document.documentElement,reduce=matchMedia('(prefers-reduced-motion: reduce)');
+let hindi=false;
+const lang=()=>hindi?'hi':'en';
+
+/* ---------- header: transparent over hero, solid after scroll or while menu is open ---------- */
+const header=$('.site-header'),nav=$('#nav'),menu=$('#menu');
+const syncHeader=()=>header.classList.toggle('solid',scrollY>40||nav.classList.contains('open'));
+addEventListener('scroll',syncHeader,{passive:true});syncHeader();
+
+function setMenu(open,restoreFocus){
+  nav.classList.toggle('open',open);menu.setAttribute('aria-expanded',open);syncHeader();
+  if(open)nav.querySelector('a').focus();else if(restoreFocus)menu.focus();
+}
 menu.onclick=()=>setMenu(!nav.classList.contains('open'));
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open'))setMenu(false,true)});
 
+/* ---------- scroll spy: aria-current on the nav link for the section in view ---------- */
+const navLinks=[...nav.querySelectorAll('a')];
+if('IntersectionObserver' in window){
+  const spy=new IntersectionObserver(es=>es.forEach(en=>{
+    if(!en.isIntersecting)return;
+    navLinks.forEach(a=>a.getAttribute('href')==='#'+en.target.id?a.setAttribute('aria-current','true'):a.removeAttribute('aria-current'));
+  }),{rootMargin:'-45% 0px -50% 0px'});
+  $$('main section[id]').forEach(s=>spy.observe(s));
+}
+
+/* ---------- featured service selector (hero scenes) ---------- */
+const scenes=[
+  {key:'astro',svc:'Astrology',en:['Astrology','Your birth chart, decoded.','Ask about astrology'],hi:['ज्योतिष','आपकी जन्म कुंडली, सरल भाषा में।','ज्योतिष परामर्श लें']},
+  {key:'vastu',svc:'Vastu',en:['Vastu Shastra','Give your space a glow-up.','Ask about Vastu'],hi:['वास्तु शास्त्र','अपने स्थान को नया रूप दें।','वास्तु परामर्श लें']},
+  {key:'reiki',svc:'Reiki',en:['Reiki','Slow down and reset.','Ask about Reiki'],hi:['रेकी','रुकें, साँस लें, फिर शुरू करें।','रेकी परामर्श लें']}
+];
+const hero=$('.hero'),turn=$('#turn');
+let cur=0,angle=0,busy=false;
+function setText(el,en,hi){el.dataset.en=en;el.dataset.hi=hi;el.textContent=hindi?hi:en}
+function paintScene(){
+  const s=scenes[cur];
+  setText($('#scene-eyebrow'),s.en[0],s.hi[0]);
+  setText($('#scene-title'),s.en[0],s.hi[0]);
+  setText($('#scene-line'),s.en[1],s.hi[1]);
+  setText($('#scene-link'),s.en[2],s.hi[2]);
+  $('#scene-link').dataset.service=s.svc;
+  $('#scene-count').textContent=`0${cur+1} / 0${scenes.length}`;
+}
+function go(dir){
+  if(busy)return;
+  cur=(cur+dir+scenes.length)%scenes.length;angle+=dir*120;
+  hero.dataset.scene=scenes[cur].key;
+  turn.style.transform=`rotate(${angle}deg)`;
+  if(reduce.matches){paintScene();return}
+  busy=true;hero.classList.add('swapping');
+  setTimeout(()=>{paintScene();hero.classList.remove('swapping')},350);
+  setTimeout(()=>{busy=false},900);
+}
+$('#prev').onclick=()=>go(-1);
+$('#next').onclick=()=>go(1);
+
+/* pause ambient artwork motion while the hero is offscreen */
+if('IntersectionObserver' in window){
+  new IntersectionObserver(([en])=>hero.classList.toggle('offscreen',!en.isIntersecting)).observe(hero);
+}
+
+/* ---------- language ---------- */
 $('#lang').onclick=()=>{
-  hindi=!hindi;const k=hindi?'hi':'en';
-  document.documentElement.lang=k;
-  $('#lang').lang=hindi?'en':'hi';
+  hindi=!hindi;const k=lang();
+  root.lang=k;$('#lang').lang=hindi?'en':'hi';
   $$('[data-en]').forEach(e=>e.textContent=e.dataset[k]);
   $$('[data-label-en]').forEach(e=>e.setAttribute('aria-label',e.dataset[hindi?'labelHi':'labelEn']));
   if(!$('#result').hidden)build();
   syncThemeBtn();
 };
 
-/* light (saffron) / dark (cosmic) theme */
-const root=document.documentElement,themeBtn=$('#theme'),mq=matchMedia('(prefers-color-scheme: light)');
-let savedTheme=null;try{savedTheme=localStorage.getItem('theme')}catch(e){}
+/* ---------- theme: deep navy (default) / saffron light ---------- */
+const themeBtn=$('#theme');
 function syncThemeBtn(){
   const light=root.dataset.theme==='light';
   themeBtn.textContent=light?'☾':'☀';
-  themeBtn.setAttribute('aria-label',hindi?(light?'डार्क थीम पर जाएँ':'केसरिया लाइट थीम पर जाएँ'):(light?'Switch to dark theme':'Switch to saffron light theme'));
-  $('#theme-color').content=light?'#fff6e8':'#120a1c';
+  themeBtn.setAttribute('aria-label',hindi?(light?'डार्क नेवी थीम पर जाएँ':'केसरिया लाइट थीम पर जाएँ'):(light?'Switch to dark navy theme':'Switch to saffron light theme'));
+  $('#theme-color').content=light?'#fbf4e8':'#050b1b';
 }
-function setTheme(t,save){
+themeBtn.onclick=()=>{
+  const t=root.dataset.theme==='light'?'dark':'light';
   root.dataset.theme=t;syncThemeBtn();
-  if(save){savedTheme=t;try{localStorage.setItem('theme',t)}catch(e){}}
-}
-themeBtn.onclick=()=>setTheme(root.dataset.theme==='light'?'dark':'light',true);
-mq.addEventListener&&mq.addEventListener('change',e=>{if(savedTheme!=='light'&&savedTheme!=='dark')setTheme(e.matches?'light':'dark',false)});
+  try{localStorage.setItem('theme',t)}catch(e){}
+};
 syncThemeBtn();
 
-$$('[data-service]').forEach(a=>a.addEventListener('click',()=>{
-  $('#service').value=a.dataset.service;
-  if('prompt' in a.dataset)$('#message').value=a.textContent.trim();
+/* ---------- consultation form ---------- */
+$$('[data-service]').forEach(el=>el.addEventListener('click',()=>{
+  $('#service').value=el.dataset.service;
+  if('prompt' in el.dataset){$('#message').value=el.textContent.trim();if(!$('#name').value)$('#name').focus()}
 }));
-
 function build(){
   const name=$('#name').value.trim(),sel=$('#service'),svc=sel.options[sel.selectedIndex].textContent,q=$('#message').value.trim();
   const msg=hindi
@@ -470,20 +601,19 @@ function build(){
   $('#output').value=msg;
   $('#wa').href='https://wa.me/?text='+encodeURIComponent(msg);
 }
-
 $('#request').onsubmit=e=>{
   e.preventDefault();build();
   $('#result').hidden=false;$('#status').textContent='';$('#output').focus();
 };
-
 $('#copy').onclick=async()=>{
   const o=$('#output');
-  try{await navigator.clipboard.writeText(o.value);$('#status').textContent=hindi?'संदेश कॉपी हो गया। ✅':'Message copied. ✅'}
+  try{await navigator.clipboard.writeText(o.value);$('#status').textContent=hindi?'संदेश कॉपी हो गया।':'Message copied.'}
   catch{o.select();$('#status').textContent=hindi?'कृपया चयनित संदेश कॉपी करें।':'Please copy the selected message manually.'}
 };
 
 $('#year').textContent=new Date().getFullYear();
 
+/* ---------- scroll reveal ---------- */
 if('IntersectionObserver' in window){
   const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12});
   $$('.reveal').forEach(el=>io.observe(el));

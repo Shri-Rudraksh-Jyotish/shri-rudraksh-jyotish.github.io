@@ -1,127 +1,298 @@
-# Design System
+# DESIGN.md — Cinematic Motion Portfolio
 
-Generated from `index.html` by the `design-sessions` skill on 2026-11-12. Update it whenever the styles change.
+> Design reference: [Portfolio / Animation — Mike | Creative Mints](https://dribbble.com/shots/24003762-Portfolio-Animation)
+> Additional reference: [Creative Mints project](https://creativemints.com/portfolio-animation) · [Behance case study](https://www.behance.net/gallery/196408297/Portfolio-Animation)
+> Status: implementation-oriented interpretation, not the original designer's source specification.
 
-## Principles
+## 1. Design intent
 
-- **Cosmic, not corporate**: a dark night-sky base with glowing saffron → rose → violet gradients. Heritage is kept through ॐ, the mandala and a wine-to-plum quote panel.
-- **Gen Z voice, honest content**: casual, conversational copy ("Questions? We got you.", "Zero gatekeeping") with no promised outcomes and visible disclaimers.
-- **Bold sans plus italic serif**: heavy, tight system-sans headlines, with a Georgia italic gradient line for emphasis.
-- **Tactile and alive**: pill shapes, glass surfaces, hover lifts, a marquee ticker and a slowly spinning mandala, all of which switch off under reduced motion.
-- **Self-contained and bilingual**: no external assets, and every string exists in English and Hindi.
+Build an immersive, editorial portfolio in which sculptural artwork and motion establish the identity. The experience should feel like an interactive digital art exhibition rather than a conventional SaaS landing page. Prioritize visual hierarchy, restraint, dimensionality and polished transitions.
 
-## Themes
+### Reference observations versus implementation choices
 
-There are two themes, switched by the ☀/☾ `.theme` pill in the header (`data-theme` on `<html>`). The page defaults to the OS preference, and the visitor's choice is saved in `localStorage`.
+The reference shows a deep blue cinematic scene, a luminous abstract ring with blue, pink and warm orange surfaces, a centered monogram, small uppercase navigation, and a large white serif name layered over the artwork. The creator describes experimentation with movement and evolving styles. Exact typefaces, color values, animation timings and responsive behavior are not published in the material inspected. The tokens, layout rules and interactions below are proposed implementation choices, not measured originals. The full original animation was not available for frame-by-frame inspection.
 
-- **Dark, "cosmic"** (`:root`): a night-sky plum base with a saffron → rose → violet gradient and dark text on the gradient.
-- **Light, "saffron"** (`:root[data-theme="light"]`): a warm saffron-cream base (`#fff6e8`) with saffron and amber glows, deep maroon-brown text (`#3b1405`), and a burnt saffron → vermilion → maroon gradient (`#b85500` → `#c2410c` → `#9f1239`) with white text on top. The symbols are saffron, marigold and rose.
+## 2. Visual language
 
-The quote panel (wine → plum, cream text, gold ॐ) is the same in both themes, as a fixed heritage element.
+- Art direction: futuristic editorial, contemporary gallery, cinematic minimalism.
+- Mood: mysterious, confident, refined, experimental.
+- Composition: one dominant sculptural object; foreground typography; quiet navigation; generous negative space.
+- Materials: iridescent glass, polished metal, translucent resin, luminous gradients.
+- Lighting: soft cyan rim light, warm internal highlights, directional reflections, subtle contact shadow.
+- Avoid generic SaaS cards, heavy borders, excessive neon, large pill buttons, stock illustrations, cluttered dashboards and indiscriminate glassmorphism.
 
-## Color tokens
+## 3. Color system
 
-Dark values are shown below. The light theme overrides every token marked †, plus the theme-only tokens listed after the table.
+Approximate palette inspired by the reference, with accessibility-oriented text choices.
 
-| Token | Value | Role |
+| Token | Value | Purpose |
 |---|---|---|
-| `--bg` | `#120a1c` | Page background (with fixed radial glows of rose, violet and saffron) |
-| `--bg2` | `#1c1029` | Mobile nav dropdown, `<option>` background |
-| `--text` | `#f7f0ff` | Primary text |
-| `--muted` | `#bfaed3` | Secondary text, nav links at rest, card and FAQ body |
-| `--surface` / `--surface2` | `rgba(255,255,255,.06)` / `.1` | Glass cards, chips, buttons at rest / tags and hover |
-| `--line` | `rgba(255,255,255,.13)` | All hairline borders |
-| `--saffron` | `#ff9a3c` | Gradient start, Astrology symbol |
-| `--rose` | `#ff4f8b` | Gradient middle, Reiki symbol, input focus, open FAQ border |
-| `--violet` | `#9b6bff` | Gradient end, Vastu symbol |
-| `--gold` | `#f5c26b` | Stickers, focus outline, card links, ticker ✦, FAQ "+", quote ॐ |
-| `--wine` / `--plum` | `#722e2c` / `#3d1640` | Quote panel gradient (heritage nod) |
-| `--on-grad` | `#160b12` | Text on gradient and solid-accent fills |
-| `--grad` | `linear-gradient(120deg, var(--g1), var(--g2) 52%, var(--g3))` | Primary buttons, logo mark, mandala core, gradient text |
+| `--bg-deep` | `#050B1B` | Main canvas and dark edges |
+| `--bg-navy` | `#09233F` | Hero environment |
+| `--bg-blue` | `#164A70` | Upper background glow |
+| `--surface` | `#101D32` | Menus and secondary surfaces |
+| `--text-primary` | `#F7F5F2` | Headlines and important text |
+| `--text-muted` | `#B4C5D8` | Descriptions and navigation |
+| `--accent-gold` | `#FFC18A` | Active nav, small labels |
+| `--accent-cyan` | `#25B9F3` | Artwork rim light |
+| `--accent-pink` | `#EF438E` | Artwork reflection |
+| `--accent-orange` | `#FF925E` | Artwork highlights |
+| `--line` | `rgba(180,197,216,.20)` | Dividers and guides |
 
-† Overridden in light: `--bg`, `--bg2`, `--text`, `--muted`, `--surface`, `--surface2`, `--line`, `--saffron`, `--rose`, `--violet`, `--gold` (`#b45309` amber, for link and icon contrast on cream), `--on-grad` (white).
+Use a radial blue glow fading into navy and near-black, not a flat background. Keep saturated accents mostly inside artwork. Use ivory for high-priority text and gold for limited emphasis. Verify actual contrast over artwork; add a dark scrim behind text if required.
 
-Theme-aware tokens added for the toggle: `--g1`/`--g2`/`--g3` (gradient stops, also used by the SVG through `.s1`–`.s3`), `--on-sym` (glyph on `.symbol` tiles), `--line-strong` (hover borders), `--sticker-fg`/`--sticker-bg`/`--sticker-line`, `--header-bg`, `--well` (input background), `--core1`/`--core2` (mandala core, through `.c1`/`.c2`), `--art-glow`, and `--page-bg` (body background with its glows).
+```css
+:root {
+  color-scheme: dark;
+  --bg-deep: #050b1b;
+  --bg-navy: #09233f;
+  --bg-blue: #164a70;
+  --surface: #101d32;
+  --text-primary: #f7f5f2;
+  --text-muted: #b4c5d8;
+  --accent-gold: #ffc18a;
+  --accent-cyan: #25b9f3;
+  --accent-pink: #ef438e;
+  --accent-orange: #ff925e;
+  --line: rgba(180,197,216,.20);
+  --font-display: 'Bodoni Moda', 'Times New Roman', serif;
+  --font-body: 'Manrope', Arial, sans-serif;
+  --ease-out: cubic-bezier(.22,1,.36,1);
+  --ease-in-out: cubic-bezier(.65,0,.35,1);
+  --duration-fast: 180ms;
+  --duration-normal: 350ms;
+  --duration-scene: 900ms;
+  --gutter: clamp(20px, 5vw, 80px);
+  --content-max: 1440px;
+}
+.hero {
+  background: radial-gradient(ellipse at 50% 8%, var(--bg-blue), var(--bg-navy) 42%, var(--bg-deep) 85%);
+  min-height: 100svh;
+  position: relative;
+  isolation: isolate;
+}
+```
 
-Card `::after` glows (`--glow` per card), button and chip hover shadows, and the logo glow still use hard-coded rose, saffron and violet `rgba()` tints that work on both backgrounds.
+## 4. Typography
 
-## Typography
+Recommended substitutes, not identified original fonts: Bodoni Moda for display, Manrope for functional text. Self-host licensed WOFF2 files where practical; retain fallback stacks.
 
-System fonts only: `--sans` (`system-ui, -apple-system, "Segoe UI", Roboto, sans-serif`) and `--serif` (`Georgia, "Times New Roman", serif`).
+| Role | Desktop | Mobile | Style |
+|---|---|---|---|
+| Hero name / H1 | `clamp(64px, 9vw, 144px)` | `clamp(42px, 11vw, 64px)` | Serif, 400, line-height .94–1.04, tracking -.045em |
+| Section H2 | 64–88px | 38–52px | Serif, 400, line-height 1.04 |
+| Project H3 | 32–48px | 28–36px | Serif, 400 |
+| Body | 16–18px | 16px | Sans, 400–500, line-height 1.65 |
+| Navigation | 12–13px | 14px | Sans, 600, uppercase, tracking .08em |
+| Eyebrow | 11–13px | 11–12px | Sans, 600, uppercase, tracking .24em–.35em |
 
-| Element | Style |
+Use oversized type sparingly. A hero name may appear uppercase, centered and visually layered in front of the artwork. Keep ordinary paragraphs in sentence case and limited to roughly 60–70 characters per line. Small decorative labels must never carry essential information alone.
+
+## 5. Layout and spacing
+
+- Desktop: 12-column grid, 24px gaps, fluid outer gutters, maximum content width 1440px.
+- Tablet: 8 columns, 20px gaps; mobile: 4 columns, 16px gaps.
+- Spacing scale (px): 4, 8, 12, 16, 24, 32, 48, 64, 96, 128.
+- Section padding: 96–128px desktop, 64–80px mobile.
+- Hero occupies at least one small viewport height; content may expand vertically on short screens.
+- Keep the page in normal document flow; no global scroll hijacking.
+- Layer order: background (0), artwork (1), optional text scrim (2), hero copy (3), navigation and controls (4), dialogs (10).
+
+### Hero composition
+
+```text
++----------------------------------------------------------------+
+| ABOUT          WORK          [MONOGRAM]       SHOP    CONTACT  |
+|                                                                |
+|                     ABSTRACT 3D SCULPTURE                      |
+|                  /                         \\                  |
+|    PREV         |    luminous glass ring    |          NEXT    |
+|                  \\                         /                  |
+|                         ILLUSTRATION                           |
+|                        PORTFOLIO NAME                          |
+|                              ◆                                 |
+|                       GENERATIVE DESIGN                        |
+|                                                                |
+|                      01 / 03    Scroll ↓                       |
++----------------------------------------------------------------+
+```
+
+The diagram describes a suggested layout. The original visible design contains a centered mark, split navigation, artwork, overlaid name, labels and subtle side indicators. Slide numbering and scroll prompt are optional extensions.
+
+- Header: balanced left and right navigation groups around a centered monogram; desktop height 80–100px.
+- Artwork: centered, roughly 55–72% of hero width on desktop, with a height cap of about 65vh; maintain its aspect ratio.
+- Copy: near the lower third of the hero, overlapping the lower portion of the visual; headline always remains legible.
+- Controls: minimal side arrows with faint guide lines; expose accessible names and 44px minimum hit areas.
+- Mobile: compact logo/menu header, artwork centered above or partially behind headline, arrows below artwork or within a bottom control row. Do not clip essential text.
+
+## 6. Site structure
+
+The following sections are proposed for a usable portfolio beyond the visible reference hero.
+
+| Section | Content | Layout |
+|---|---|---|
+| Hero | Identity, discipline, featured sculpture | Full-height immersive scene |
+| Selected work | 3–6 projects, role, year, summary | Large editorial image-led rows or two-column grid |
+| Project detail | Challenge, contribution, outcome, media | Long-form case study |
+| About | Short bio, capabilities, portrait optional | Asymmetric text and image |
+| Shop (optional) | Real products or resources | Simple editorial grid; omit if not needed |
+| Contact | Email, availability, social links | Large serif call to action |
+| Footer | Copyright, navigation, credits | Compact, muted |
+
+Do not invent client logos, testimonials, project outcomes or products. Replace reference name and monogram with the actual portfolio owner's identity. Only include Shop if it has real content.
+
+## 7. Component specifications
+
+### Header / navigation
+- Transparent over hero; use an opaque navy surface when necessary for contrast on scroll.
+- Split navigation with central logo on desktop. Mobile uses a labeled menu button and collapsible navigation.
+- Active link uses gold text and an additional underline or marker, not color alone.
+- Hover: subtle color transition; focus: visible 2px outline with 4px offset.
+- Use semantic links, a skip link and `aria-current` where appropriate.
+
+### Hero artwork
+- Prefer an original GLB/glTF sculptural asset or a licensed pre-rendered image/video.
+- The signature form is an abstract twisted torus with cyan exterior, orange interior highlights and pink reflections.
+- Model should have believable thickness, bevels, specular reflections and a strong silhouette.
+- Use soft area/environment lighting and a restrained background glow; avoid decorative particle overload.
+- Keep artwork separate from HTML copy. Never bake navigation or primary headings into an image.
+- Static image fallback must preserve the composition when WebGL/video is unavailable.
+
+### Featured project selector
+- Previous/next buttons, optional current/total count; controls remain keyboard accessible.
+- One active scene at a time. On change, update artwork, project label and title together.
+- Use a 700–1000ms crossfade/transform transition; prevent conflicting transitions during rapid input.
+- Default to manual navigation; optional autoplay must have a pause control and stop on interaction.
+- Announce user-triggered changes through a polite live region without announcing continuous animation.
+
+### Project cards
+- Use artwork-first rectangular previews (typically 4:3 or 16:10).
+- Title, discipline, year and short description below the media.
+- Minimal or no border radius (0–8px); no generic elevated card shadows.
+- Hover: image scale up to 1.035 and a subtle arrow movement; focus offers equivalent affordance.
+- Entire project link has a descriptive accessible name; no nested interactive controls.
+
+### Buttons and links
+- Primary CTA: text link with directional arrow, or restrained outlined button.
+- Secondary: understated uppercase link.
+- Minimum target size 44×44px for important controls.
+- Disabled state only where meaningful; never make navigation depend solely on animation.
+
+## 8. Motion system
+
+Motion is a design feature, not decoration. Animate hierarchy and relationships; avoid simultaneous competing effects.
+
+| Interaction | Duration | Behavior |
+|---|---|---|
+| Initial artwork reveal | 900–1200ms | Opacity 0→1, scale .96→1 |
+| Headline entrance | 650–850ms | Translate Y 24px→0, opacity reveal |
+| Label entrance | 400–600ms | Fade with 80–120ms stagger |
+| Scene change | 700–1000ms | Crossfade, subtle rotation or scale |
+| Hover/focus | 150–250ms | Color, underline or small translation |
+| Scroll section reveal | 500–700ms | Opacity and Y 16–24px |
+| Ambient artwork drift | 8–14s | Small float or restrained rotation |
+
+### Hero choreography (suggested)
+1. 0–250ms: background and navigation establish the scene.
+2. 100–1100ms: sculpture fades into view.
+3. 350–1050ms: main headline rises into place.
+4. 600–1250ms: supporting labels and controls appear.
+5. After entrance: optional subtle ambient motion; pause when offscreen.
+
+Use `transform` and `opacity` for DOM animations. Keep pointer parallax optional, limited to ~8px translation or ~3° tilt, disabled on touch and reduced-motion settings. Avoid perpetual animation on text. Do not lock content behind a preloader.
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .motion-layer, .hero-art, .hero-title, .reveal {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+```
+
+In JavaScript also observe reduced-motion preference: stop ambient loops, disable pointer tracking and use static scene changes. Do not depend on CSS alone to disable WebGL animation.
+
+## 9. Responsive behavior
+
+| Width | Rules |
 |---|---|
-| Body | 18px / 1.65, `--sans` |
-| h1 | `clamp(44px, 7vw, 88px)`, weight 850, tracking `-.045em`, line-height 1.02. Two block lines; the second (`.accent.grad-text`) is serif italic, weight 400, gradient-filled |
-| h2 | `clamp(34px, 4.6vw, 56px)`, weight 800, tracking `-.035em` |
-| h3 | 26px, weight 750 (38px in the big bento card, 30px on mobile) |
-| `.sticker` | 13px uppercase pill, tracking `.12em`, weight 750, gold on a translucent gold fill |
-| `.lead` | 20px, `--muted`, max-width 580px |
-| `.num` | 60px, weight 850, gradient text (step numbers) |
-| `.quote p` | 26px serif italic |
-| `.note` | 14px, `--muted` |
+| < 640px | Single-column layout, compact menu, poster-first hero, 20px gutters |
+| 640–1023px | Balanced artwork and type, 8-column grid, simplify controls |
+| 1024–1439px | Full editorial composition, split nav, large artwork |
+| ≥ 1440px | Center content within max width; allow background to bleed full screen |
 
-## Layout and spacing
+Test at 320, 390, 768, 1024, 1440 and 1920px, including landscape mobile. No horizontal overflow. Support browser zoom up to 200%; allow hero height to grow when text wraps. Respect safe-area insets for edge controls.
 
-- **Container** `.wrap`: max-width 1180px, 24px gutters (16px on mobile).
-- **Sections**: 88px vertical padding (60px on mobile), `scroll-margin-top: 80px`.
-- **Hero**: grid `1.15fr .85fr`, 40px gap. On mobile the mandala moves above the text (`order: -1`, max-width 300px).
-- **Services bento**: grid `1.25fr 1fr`, 18px gap. The Astrology `.card.big` spans 2 rows with its content aligned to the bottom.
-- **About** `.split`: `1fr 1fr`, 56px gap. **Steps**: 3 equal columns, 18px gap.
-- **Breakpoint**: a single `max-width: 800px` block that collapses every grid to one column and turns the nav into a dropdown.
-- **Radii**: `--r-sm` 14px (inputs), `--r-md` 20px (symbols, vibes, FAQ rows), `--r-lg` 28px (cards, form, quote), `--pill` 999px (buttons, chips, tags, stickers).
+## 10. Accessibility
 
-## Components
+Target WCAG 2.2 AA. Validate contrast at least 4.5:1 for normal text and 3:1 for large text and relevant UI boundaries. Check contrast throughout moving scenes, not only on the first frame.
 
-- **Header**: sticky glass (`--header-bg` with a 14px backdrop blur) and a hairline bottom border. Gradient `.mark` logo with a rose glow. Nav links are muted until hovered. `.theme` (a 42px round pill with a gold ☀/☾), `.lang` and `.menu` are glass pills.
-- **`.btn`**: gradient pill, min-height 52px, weight 750, `--on-grad` text. On hover it lifts 2px and gains a rose shadow. **`.btn.ghost`** is transparent with a hairline border and a glass fill on hover.
-- **`.chip`**: a glass pill prompt in the hero. On hover it lifts and tints rose. It carries `data-service` and `data-prompt`.
-- **`.sticker`**: a gold uppercase pill above each section heading.
-- **`.ticker`**: a full-bleed band with a `.track` of two identical `.group`s, scrolling over 38s. Each item gets a gold ✦ prefix.
-- **`.card`**: a glass panel with a 28px radius. On hover it lifts 4px, brightens its border and strengthens its corner `::after` glow (`--glow` comes from `.c-astro`, `.c-vastu` or `.c-reiki`). It contains a solid-accent `.symbol` tile, an h3, muted copy, `.tags` (hashtag pills) and a gold link.
-- **`.quote`**: a wine → plum panel with a glowing gold ॐ and a serif italic line.
-- **`.vibe`**: a glass row with an emoji, a bold title and a muted line.
-- **`.step`**: a glass card with a gradient `.num`.
-- **FAQ**: `<details>` glass rows. The native marker is replaced by a gold "+" that rotates 45° when open, and the open row gets a rose border.
-- **`.form`**: a glass panel with a 12px blur. Inputs are dark translucent wells with a rose focus border. Results show **Copy** (ghost) and **Share on WhatsApp** (gradient) side by side.
-- **Footer**: a hairline top border with muted text.
+- Semantic landmarks: header, nav, main, section, footer; one primary H1.
+- Keyboard navigation, visible focus, logical DOM order, accessible mobile menu with Escape support and focus restoration.
+- Decorative artwork uses empty alt or aria-hidden; informative project artwork has meaningful alt text.
+- Provide pause/stop controls for qualifying automatically moving content; no rapid flashes.
+- No critical information conveyed solely through color, motion, hover or 3D rendering.
+- Contact forms, if used, have labels, errors and submission feedback.
+- Ensure essential content is usable without JavaScript and when images fail.
 
-## Motion
+## 11. Implementation guidance
 
-| Effect | Implementation |
-|---|---|
-| Mandala rotation | `.spin` group, `transform-origin: 220px 220px`, 90s linear infinite |
-| Sparkles | `.spark` ✦ glyphs, 5s `float` (bob, scale and fade) with staggered delays |
-| Ticker | `.track` `translateX(-50%)` over 38s, linear infinite |
-| Scroll reveal | `.js .reveal` starts at opacity 0 / +24px and goes to `.in` through an IntersectionObserver (threshold .12) |
-| Hover | 0.2–0.25s transforms on buttons, chips and cards |
+Suggested stack (not required): Next.js + TypeScript + Tailwind CSS, with CSS or GSAP for motion and React Three Fiber/Three.js only when a real interactive 3D object adds value. A static HTML/CSS/JS implementation with pre-rendered assets is also valid. Use one motion library at most unless there is a specific need.
 
-Under `prefers-reduced-motion: reduce`, every animation and transition is turned off, the ticker wraps into a static centered row with its duplicate hidden, and reveals show immediately.
+Suggested component structure:
 
-## Iconography and imagery
+```text
+app/
+  page.tsx
+  layout.tsx
+  globals.css
+components/
+  Header.tsx
+  Hero.tsx
+  HeroArtwork.tsx
+  SceneControls.tsx
+  ProjectGrid.tsx
+  ProjectCard.tsx
+  About.tsx
+  Contact.tsx
+  Footer.tsx
+public/
+  artwork/
+    hero-poster.webp
+    hero.glb            # optional
+    hero-loop.webm      # optional alternative
+  fonts/
+  projects/
+DESIGN.md
+```
 
-- The hero mandala is inline SVG: a gradient-stroked (`#sg`) ring, dashed outer circle, 8 `<use>` petals and a diamond with triangles, all rotating. It sits on a dark radial core, with a gradient disc and a dark ॐ in the centre. Gold dots mark the compass points.
-- Service glyphs: ☉ Astrology, ◇ Vastu, ✿ Reiki. Emoji are used in chips, vibes and status messages (💼 💞 🏠 🪴 🌙 💬 🧘 🤝 ✨ ✅). Decorative glyphs are `aria-hidden`.
-- No raster images or external assets.
+Store content separately from rendering. A project record should contain `id`, `title`, `discipline`, `year`, `description`, `image`, `imageAlt`, and `href`. Featured scene data may add `poster`, `model` or `video` and a background theme. Never require all three media variants to load.
 
-## Internationalization
+### Performance budgets (targets)
+- LCP ≤ 2.5s, INP ≤ 200ms, CLS ≤ 0.1 at the 75th percentile after deployment.
+- Hero poster target ≤ 350KB where quality permits; responsive AVIF/WebP for projects.
+- Lazy-load below-fold media and heavy 3D modules; prioritize the hero poster only.
+- If using WebGL, cap device pixel ratio around 1.5–2, optimize textures and geometry, and pause rendering when hidden/offscreen.
+- Use a poster on low-power devices or failed rendering; avoid loading both large video and GLB by default.
+- Reserve image dimensions to avoid layout shift. Fonts use `font-display: swap`.
+- Test on a mid-range Android device and throttled mobile network; favor smooth, reliable interaction over visual complexity.
 
-- Text: `data-en` / `data-hi` on every translatable element, swapped through `textContent`. This includes `<title>` and the language button's own label.
-- Accessible names: `data-label-en` / `data-label-hi`, swapped into `aria-label`.
-- Translatable elements hold plain text only. Styled fragments are separate siblings (e.g. the h1's two `<span>`s).
-- The prepared message and copy status come from JS in the active language, and the message rebuilds when the language toggles.
-- Hindi copy is written gender-neutral.
+## 12. Design QA and acceptance criteria
 
-## Accessibility
+- [ ] The opening screen reads as a cinematic editorial portfolio, not a dashboard.
+- [ ] A single sculptural focal point dominates the scene.
+- [ ] Large serif type, compact navigation and strong negative space establish hierarchy.
+- [ ] Artwork and typography remain readable at every viewport and animation state.
+- [ ] Navigation, project selection and contact links actually work.
+- [ ] Animations are purposeful, interruptible and respect reduced motion.
+- [ ] Static fallback works without WebGL and essential content works without JS.
+- [ ] Keyboard, touch, focus, contrast and zoom have been tested.
+- [ ] No placeholder assets, broken links, fake claims or console errors remain.
+- [ ] Asset licenses and attribution are documented.
 
-Already in place: a translated skip link, a global `:focus-visible` gold outline, `aria-expanded` and `aria-controls` on the menu, translated `aria-label`s, `lang="hi"` on the Hindi toggle label, a labelled hero SVG, `aria-hidden` on decorative glyphs, emoji and the duplicate ticker, `role="status"` feedback, a `<label>` on every field, and full reduced-motion support. Text colors are light on near-black (`--text` and `--muted` both pass WCAG AA). Gradient buttons use dark text.
+## 13. Instructions for AI coding agents
 
-## Known inconsistencies
-
-- Glow and shadow `rgba()` tints are hard-coded and identical in both themes. The SVG stops keep hex `stop-color` attributes only as a fallback; CSS overrides them.
-- In the light theme the `--violet` token holds marigold (`#f2b233`), so the name no longer describes the color. Consider renaming the symbol tokens by role (`--sym-astro`, etc.).
-- Without JavaScript the page always renders dark: the light palette is applied only through the head script.
-- Chip prompts are copied into `#message` in whichever language is active at click time, and switching language later doesn't retranslate them.
-- The `<meta name="description">` is English only.
-- The italic serif accent line has no Devanagari italic, so in Hindi it renders upright in the fallback font.
-- Emoji appearance depends on the platform.
+Treat this file as the visual and interaction contract. Preserve the cinematic composition, restrained navigation, serif/sans contrast, deep navy palette and sculptural focal point. Implement a functional semantic layout first, then progressively enhance with motion. Reuse tokens instead of scattering hard-coded values. Build real navigation and project links, use the actual owner's identity, and prioritize mobile accessibility and performance. Do not substitute a generic gradient SaaS hero or card-heavy template. If no 3D asset is available, use a locally supplied original or licensed poster and document the missing asset rather than pretending it exists. Do not copy the reference designer's logo, artwork or exact identity without permission. 
